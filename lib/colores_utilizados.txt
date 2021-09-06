@@ -1,0 +1,2 @@
+Fondo Principal 00xf381764;
+Fondo claro gradiente 00xf4C178E;

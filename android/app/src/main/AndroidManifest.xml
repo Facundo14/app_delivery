@@ -3,6 +3,7 @@
    <application
         android:label="app_delivery"
         android:icon="@mipmap/ic_launcher">
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -37,5 +38,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+               android:value="AIzaSyCjr1ctOuBuYUTZKD8D2HSjaL0Q6rxp8hA"/>    
     </application>
 </manifest>

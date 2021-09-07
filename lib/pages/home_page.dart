@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:app_delivery/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,7 +18,11 @@ class HomePage extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: [
               //Background(),
-              CustomNavBar(),
+              FondoDifuminado(),
+              CustomNavBar(
+                titulo: 'New York',
+                icono: Icons.location_on,
+              ),
               Positioned(
                 top: size.height * 0.07,
                 child: Slideshow(),
@@ -35,15 +42,24 @@ class HomePage extends StatelessWidget {
                 top: size.height * 0.5,
                 child: TextoYBoton(),
               ),
-              Positioned(
-                top: size.height * 0.6,
-                child: ListaRestaurantes(),
-              )
+              Positioned(bottom: size.height * -0.63, child: ListaRestaurantes()),
               // Center(child: Text('Hola Mundo')),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class FondoDifuminado extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width,
+      height: size.height * 0.51,
+      decoration: BoxDecoration(color: Colors.white.withOpacity(0.05)),
     );
   }
 }
@@ -55,8 +71,117 @@ class ListaRestaurantes extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height,
-      color: Colors.red,
+      child: ListView.builder(
+        physics: BouncingScrollPhysics(),
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return Restaurantes();
+        },
+      ),
     );
+  }
+}
+
+class Restaurantes extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+        width: size.width,
+        height: size.height * 0.226,
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              width: size.width,
+              height: size.height * 0.2,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              width: size.width,
+              height: size.height * 0.15,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            Positioned(
+              top: 30,
+              left: 30,
+              child: Container(
+                width: size.width * 0.2,
+                height: size.height * 0.10,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 30,
+              right: 50,
+              child: Text(
+                'Marine Rise Restaurant',
+                style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Positioned(
+              top: 60,
+              right: 190,
+              child: Container(
+                width: size.width * 0.19,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
+                    elevation: MaterialStateProperty.all(0),
+                    backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        '4.3',
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      SizedBox(width: size.width * 0.02),
+                      Icon(Icons.star),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 75,
+              right: 80,
+              child: Text(
+                '198 Poeple rated',
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            Positioned(
+              left: 40,
+              bottom: 20,
+              child: Row(
+                children: [
+                  Icon(Icons.location_on, color: Colors.yellow),
+                  SizedBox(width: size.width * 0.05),
+                  Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white)),
+                  SizedBox(width: size.width * 0.05),
+                  Icon(Icons.navigation, color: Colors.yellow)
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }
 
@@ -77,7 +202,9 @@ class TextoYBoton extends StatelessWidget {
           ),
           Spacer(),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, 'map');
+            },
             child: Text(
               'View in map',
               style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 18),
@@ -91,26 +218,6 @@ class TextoYBoton extends StatelessWidget {
               ),
             ),
           )
-        ],
-      ),
-    );
-  }
-}
-
-class CustomNavBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height * 0.06,
-      child: Row(
-        children: [
-          Container(padding: EdgeInsets.only(left: 10), child: Icon(Icons.menu, size: 30, color: Colors.white)),
-          Spacer(),
-          Text('New York', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
-          Icon(Icons.location_on, color: Colors.yellow, size: 30),
-          SizedBox(width: 10)
         ],
       ),
     );
@@ -141,37 +248,31 @@ class CardSlide extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      width: size.width * 0.6,
+      width: size.width * 0.8,
       height: size.height * 0.20,
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.centerRight,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image(
               image: AssetImage('assets/img1.jpg'),
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
             ),
           ),
-          Positioned(
-            right: 0,
-            child: ClipRRect(
+          Container(
+            width: size.width * 0.725,
+            height: size.height * 0.2,
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              child: Container(
-                width: size.width * 0.6,
-                height: size.height * 0.187,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.bottomLeft,
-                    end: FractionalOffset.topRight,
-                    colors: [
-                      Colors.transparent.withOpacity(0.006),
-                      Colors.grey,
-                    ],
-                    stops: [0.3, 1.0],
-                  ),
-                ),
+              gradient: LinearGradient(
+                begin: FractionalOffset.bottomLeft,
+                end: FractionalOffset.topRight,
+                colors: [
+                  Colors.transparent.withOpacity(0.006),
+                  Colors.grey,
+                ],
+                stops: [0.3, 1.0],
               ),
             ),
           ),

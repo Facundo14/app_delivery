@@ -90,16 +90,18 @@ class _BotonRedSocial extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FaIcon(
               icono,
               color: Colors.yellow,
               size: 20,
             ),
-            SizedBox(width: 20),
-            Text(
-              nombre,
-              style: TextStyle(fontSize: 20, color: Colors.yellow),
+            Center(
+              child: Text(
+                nombre,
+                style: TextStyle(fontSize: 20, color: Colors.yellow),
+              ),
             )
           ],
         ),
@@ -136,8 +138,13 @@ class InputsBoton extends StatelessWidget {
             forgot: true,
             pagForgot: 'home',
           ),
-          BotonSesion(
-            titulo: 'SIGN IN',
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, 'home');
+            },
+            child: BotonSesion(
+              titulo: 'SIGN IN',
+            ),
           )
         ],
       ),

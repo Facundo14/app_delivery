@@ -9,11 +9,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'order',
+      initialRoute: 'login',
       routes: {
+        'login': (_) => LoginPage(),
+        'registro': (_) => RegistroPage(),
         'home': (_) => HomePage(),
         'map': (_) => MapPage(),
         'order': (_) => OrderPage(),
+        'items': (_) => ItemsPage(),
       },
       home: HomePage(),
     );

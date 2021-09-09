@@ -24,6 +24,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^9.1.0
   google_maps_flutter: ^2.0.8
   provider: ^6.0.0
 
@@ -45,6 +46,8 @@ flutter:
     - assets/
     - assets/category/
     - assets/profile/
+    - assets/productos/
+    - assets/fondo/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -179,31 +179,35 @@ class Restaurantes extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-        width: size.width,
-        height: size.height * 0.17,
-        child: Stack(
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              width: size.width,
-              height: size.height * 0.15,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
-              ),
+      width: size.width,
+      height: size.height * 0.17,
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.all(10),
+            width: size.width,
+            height: size.height * 0.15,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(15),
             ),
-            Container(
-              margin: EdgeInsets.all(10),
-              width: size.width,
-              height: size.height * 0.1,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            width: size.width,
+            height: size.height * 0.1,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
             ),
-            Positioned(
-              top: 21,
-              left: 30,
+          ),
+          Positioned(
+            top: 21,
+            left: 30,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, 'restoInfo');
+              },
               child: Container(
                 width: size.width * 0.15,
                 height: size.height * 0.075,
@@ -213,72 +217,74 @@ class Restaurantes extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              top: 21,
-              left: 100,
-              child: Text(
-                'Marine Rise Restaurant',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
+          ),
+          Positioned(
+            top: 21,
+            left: 100,
+            child: Text(
+              'Marine Rise Restaurant',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            Positioned(
-              top: 53,
-              left: 110,
-              child: Container(
-                height: size.height * 0.03,
-                width: size.width * 0.15,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
-                    elevation: MaterialStateProperty.all(0),
-                    backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
+          ),
+          Positioned(
+            top: 53,
+            left: 110,
+            child: Container(
+              height: size.height * 0.03,
+              width: size.width * 0.15,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
+                  elevation: MaterialStateProperty.all(0),
+                  backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        '4.3',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      SizedBox(width: size.width * 0.005),
-                      Icon(
-                        Icons.star,
-                        size: 17,
-                      ),
-                    ],
-                  ),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      '4.3',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    SizedBox(width: size.width * 0.005),
+                    Icon(
+                      Icons.star,
+                      size: 17,
+                    ),
+                  ],
                 ),
               ),
             ),
-            Positioned(
-              top: 55,
-              left: 180,
-              child: Text(
-                '198 Poeple rated',
-                style: TextStyle(color: Colors.grey),
-              ),
+          ),
+          Positioned(
+            top: 55,
+            left: 180,
+            child: Text(
+              '198 Poeple rated',
+              style: TextStyle(color: Colors.grey),
             ),
-            Positioned(
-              left: 40,
-              bottom: 18,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(Icons.location_on, color: Colors.yellow, size: 15),
-                  SizedBox(width: size.width * 0.05),
-                  Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white)),
-                  SizedBox(width: size.width * 0.05),
-                  Icon(Icons.navigation, color: Colors.yellow, size: 15)
-                ],
-              ),
+          ),
+          Positioned(
+            left: 40,
+            bottom: 18,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(Icons.location_on, color: Colors.yellow, size: 15),
+                SizedBox(width: size.width * 0.05),
+                Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white)),
+                SizedBox(width: size.width * 0.05),
+                Icon(Icons.navigation, color: Colors.yellow, size: 15)
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
 

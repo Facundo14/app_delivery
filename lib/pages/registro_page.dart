@@ -1,4 +1,4 @@
-import 'package:app_delivery/pages/boton_sesion.dart';
+import 'package:app_delivery/widgets/boton_sesion.dart';
 import 'package:app_delivery/widgets/inputs_login_registro.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

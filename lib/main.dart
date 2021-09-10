@@ -1,4 +1,5 @@
 import 'package:app_delivery/pages/pages.dart';
+import 'package:app_delivery/pages/resto_list.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'login',
+      initialRoute: 'items',
       routes: {
         'login': (_) => LoginPage(),
         'registro': (_) => RegistroPage(),
@@ -17,6 +18,8 @@ class MyApp extends StatelessWidget {
         'map': (_) => MapPage(),
         'order': (_) => OrderPage(),
         'items': (_) => ItemsPage(),
+        'restoList': (_) => RestoListPage(),
+        'restoInfo': (_) => RestoInfoPage(),
       },
       home: HomePage(),
     );

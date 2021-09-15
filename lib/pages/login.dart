@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app_delivery/widgets/boton_sesion.dart';
 import 'package:app_delivery/widgets/inputs_login_registro.dart';
 import 'package:flutter/material.dart';
@@ -127,23 +128,32 @@ class InputsBoton extends StatelessWidget {
       height: size.height * 0.38,
       child: Column(
         children: [
-          InputContainer(
-            lblText: 'Email Address',
-            tipo: TextInputType.emailAddress,
+          FadeIn(
+            delay: Duration(milliseconds: 400),
+            child: InputContainer(
+              lblText: 'Email Address',
+              tipo: TextInputType.emailAddress,
+            ),
           ),
-          InputContainer(
-            lblText: 'Password',
-            tipo: TextInputType.visiblePassword,
-            obscureText: true,
-            forgot: true,
-            pagForgot: 'home',
+          FadeIn(
+            duration: Duration(milliseconds: 600),
+            child: InputContainer(
+              lblText: 'Password',
+              tipo: TextInputType.visiblePassword,
+              obscureText: true,
+              forgot: true,
+              pagForgot: 'home',
+            ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushReplacementNamed(context, 'home');
-            },
-            child: BotonSesion(
-              titulo: 'SIGN IN',
+          FadeIn(
+            duration: Duration(milliseconds: 800),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, 'home');
+              },
+              child: BotonSesion(
+                titulo: 'SIGN IN',
+              ),
             ),
           )
         ],
@@ -162,8 +172,12 @@ class Titulo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Food', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
-          Text('Mart', style: TextStyle(color: Colors.yellow, fontSize: 40)),
+          FadeInLeft(
+            child: Text('Food', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+          ),
+          FadeInRight(
+            child: Text('Mart', style: TextStyle(color: Colors.yellow, fontSize: 40)),
+          ),
         ],
       ),
     );

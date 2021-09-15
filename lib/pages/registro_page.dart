@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app_delivery/widgets/boton_sesion.dart';
 import 'package:app_delivery/widgets/inputs_login_registro.dart';
 import 'package:flutter/material.dart';
@@ -35,30 +36,48 @@ class RegistroPage extends StatelessWidget {
           child: Column(
             children: [
               _PicImage(),
-              InputContainer(
-                lblText: 'Full Name',
-                tipo: TextInputType.name,
+              FadeInLeft(
+                duration: Duration(milliseconds: 500),
+                child: InputContainer(
+                  lblText: 'Full Name',
+                  tipo: TextInputType.name,
+                ),
               ),
-              InputContainer(
-                lblText: 'Email Address',
-                tipo: TextInputType.emailAddress,
+              FadeInLeft(
+                duration: Duration(milliseconds: 600),
+                child: InputContainer(
+                  lblText: 'Email Address',
+                  tipo: TextInputType.emailAddress,
+                ),
               ),
-              InputContainer(
-                lblText: 'Phone Number',
-                tipo: TextInputType.phone,
+              FadeInLeft(
+                duration: Duration(milliseconds: 700),
+                child: InputContainer(
+                  lblText: 'Phone Number',
+                  tipo: TextInputType.phone,
+                ),
               ),
-              InputContainer(
-                lblText: 'Create Password',
-                tipo: TextInputType.visiblePassword,
-                obscureText: true,
+              FadeInLeft(
+                duration: Duration(milliseconds: 800),
+                child: InputContainer(
+                  lblText: 'Create Password',
+                  tipo: TextInputType.visiblePassword,
+                  obscureText: true,
+                ),
               ),
-              InputContainer(
-                lblText: 'Confirm Password',
-                tipo: TextInputType.visiblePassword,
-                obscureText: true,
+              FadeInLeft(
+                duration: Duration(milliseconds: 900),
+                child: InputContainer(
+                  lblText: 'Confirm Password',
+                  tipo: TextInputType.visiblePassword,
+                  obscureText: true,
+                ),
               ),
-              BotonSesion(
-                titulo: 'SIGN UP',
+              FadeIn(
+                duration: Duration(milliseconds: 500),
+                child: BotonSesion(
+                  titulo: 'SIGN UP',
+                ),
               )
             ],
           ),
@@ -79,14 +98,16 @@ class _PicImage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            width: size.width * 0.3,
-            height: size.height * 0.12,
-            decoration: BoxDecoration(
-              color: Colors.pink,
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage('assets/profile/prof1.jpg'),
+          BounceInRight(
+            child: Container(
+              width: size.width * 0.3,
+              height: size.height * 0.12,
+              decoration: BoxDecoration(
+                color: Colors.pink,
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/profile/prof1.jpg'),
+                ),
               ),
             ),
           ),

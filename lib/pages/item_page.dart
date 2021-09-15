@@ -1,8 +1,9 @@
+import 'package:app_delivery/widgets/boton_final.dart';
 import 'package:flutter/material.dart';
 
 const String kTitle = 'Horizontal ListWheelScrollView Sample';
 
-class ItemsPage extends StatelessWidget {
+class ItemsClientPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -35,17 +36,7 @@ class ItemsPage extends StatelessWidget {
             ),
             Positioned(
               bottom: 0,
-              child: Container(
-                width: size.width,
-                height: size.height * 0.1,
-                color: Colors.yellow,
-                child: Center(
-                  child: Text(
-                    'ADD NEW ITEM',
-                    style: TextStyle(color: Colors.purple.shade900, fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+              child: BotonFinal(),
             )
           ],
         ),
@@ -90,6 +81,7 @@ class ListaComidas extends StatelessWidget {
             child: Container(
               width: size.width * 0.97,
               height: size.height * 0.54,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
@@ -107,7 +99,7 @@ class ListaComidas extends StatelessWidget {
                         Positioned(
                           top: 0,
                           child: Container(
-                            width: size.width,
+                            width: size.width * 0.94,
                             height: size.height * 0.2,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -195,21 +187,7 @@ class ListaComidas extends StatelessWidget {
                                 SizedBox(width: size.width * 0.2),
                                 Text('\$10.00', style: TextStyle(color: Colors.white)),
                                 Spacer(),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    '    EDIT    ',
-                                    style: TextStyle(color: Colors.purple.shade900, fontWeight: FontWeight.bold, fontSize: 15),
-                                  ),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                _Cantidad(),
                               ],
                             ),
                           ),
@@ -221,6 +199,81 @@ class ListaComidas extends StatelessWidget {
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class _Cantidad extends StatefulWidget {
+  @override
+  __CantidadState createState() => __CantidadState();
+}
+
+int cantidad = 0;
+
+class __CantidadState extends State<_Cantidad> {
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width * 0.25,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: size.width * 0.07,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  if (cantidad <= 0) {
+                    cantidad = 0;
+                  } else {
+                    cantidad--;
+                  }
+                  print(cantidad);
+                });
+              },
+              child: Text(
+                '-',
+                style: TextStyle(color: Colors.purple.shade900, fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.yellow),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            child: Text(cantidad.toString(), style: TextStyle(color: Colors.white)),
+          ),
+          Container(
+            width: size.width * 0.07,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  cantidad++;
+                  print(cantidad);
+                });
+              },
+              child: Text(
+                '+',
+                style: TextStyle(color: Colors.purple.shade900, fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.yellow),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

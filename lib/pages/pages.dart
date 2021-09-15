@@ -1,13 +1,14 @@
+export 'package:app_delivery/pages/cart_page.dart';
 export 'package:app_delivery/pages/home_page.dart';
-export 'package:app_delivery/pages/map_page.dart';
-
-export 'package:app_delivery/pages/order_page.dart';
-
+export 'package:app_delivery/pages/home_page.dart';
 export 'package:app_delivery/pages/item_page.dart';
 export 'package:app_delivery/pages/login.dart';
+export 'package:app_delivery/pages/map_page.dart';
+export 'package:app_delivery/pages/order_page.dart';
 export 'package:app_delivery/pages/registro_page.dart';
-export 'package:app_delivery/pages/home_page.dart';
-
 export 'package:app_delivery/pages/resto_info.dart';
-
-
+export 'package:app_delivery/pages/address_page.dart';
+export 'package:app_delivery/pages/metodos_pago_pages.dart';
+export 'package:app_delivery/pages/confirm_order.dart';
+export 'package:app_delivery/pages/order_list.dart';
+export 'package:app_delivery/pages/order_info.dart';

@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:app_delivery/widgets/custom_navbar.dart';
+import 'package:app_delivery/widgets/menu.dart';
+import 'package:app_delivery/widgets/top_sheet.dart';
 import 'package:flutter/material.dart';
 
 class RestoInfoPage extends StatelessWidget {
@@ -15,6 +18,21 @@ class RestoInfoPage extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(top: 0, child: _FondoImagen()),
+            Positioned(
+              top: 40,
+              child: GestureDetector(
+                onTap: () {
+                  TopSheetView.show(
+                    context: context,
+                    child: SingleChildScrollView(
+                      child: Menu(),
+                    ),
+                    direction: TopSheetDirection.TOP,
+                  );
+                },
+                child: CustomNavBar(),
+              ),
+            ),
             Positioned(top: 250, child: Restaurante()),
             Positioned(top: 220, left: 68, child: _ImagenResto()),
             Positioned(top: 410, child: _DescripcionResto()),
@@ -31,25 +49,30 @@ class _Boton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height * 0.07,
-      color: Colors.yellow,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.restaurant_menu),
-          Container(
-            width: size.width * 0.45,
-            height: size.width * 0.07,
-            child: Center(
-              child: Text(
-                'ORDER FOOD NOW',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'cartList');
+      },
+      child: Container(
+        width: size.width,
+        height: size.height * 0.07,
+        color: Colors.yellow,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.restaurant_menu),
+            Container(
+              width: size.width * 0.45,
+              height: size.width * 0.07,
+              child: Center(
+                child: Text(
+                  'ORDER FOOD NOW',
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

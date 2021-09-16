@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           'SIGN IN',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: size.height * 0.025),
         ),
         centerTitle: true,
         actions: [
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
                 },
                 child: Text(
                   'SIGN UP',
-                  style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: size.height * 0.025),
                 ),
               ),
             ),
@@ -38,15 +38,23 @@ class LoginPage extends StatelessWidget {
       body: Container(
         width: size.width,
         height: size.height,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(top: 60, child: Titulo()),
-            Positioned(top: 170, child: Text('Sign in now', style: TextStyle(color: Colors.grey))),
-            Positioned(top: 240, child: InputsBoton()),
-            Positioned(top: size.height * 0.7, child: Text('Or Continue whit', style: TextStyle(color: Colors.grey))),
-            Positioned(bottom: 0, child: _RedesSociales())
-          ],
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(height: size.height * 0.05),
+              Titulo(),
+              SizedBox(height: size.height * 0.05),
+              Text('Sign in now', style: TextStyle(color: Colors.grey, fontSize: size.height * 0.02)),
+              SizedBox(height: size.height * 0.02),
+              InputsBoton(),
+              SizedBox(height: size.height * 0.05),
+              Text('Or Continue whit', style: TextStyle(color: Colors.grey, fontSize: size.height * 0.02)),
+              SizedBox(height: size.height * 0.03),
+              _RedesSociales(),
+            ],
+          ),
         ),
       ),
     );
@@ -96,19 +104,19 @@ class _BotonRedSocial extends StatelessWidget {
             FaIcon(
               icono,
               color: Colors.yellow,
-              size: 20,
+              size: size.width * 0.056,
             ),
             Center(
               child: Text(
                 nombre,
-                style: TextStyle(fontSize: 20, color: Colors.yellow),
+                style: TextStyle(fontSize: size.width * 0.056, color: Colors.yellow),
               ),
             )
           ],
         ),
         style: ElevatedButton.styleFrom(
           primary: Color(0xff40206D),
-          side: BorderSide(width: 3, color: Colors.yellow),
+          side: BorderSide(width: size.width * 0.002, color: Colors.yellow),
           shape: RoundedRectangleBorder(
             //to set border radius to button
             borderRadius: BorderRadius.circular(10),
@@ -173,10 +181,10 @@ class Titulo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FadeInLeft(
-            child: Text('Food', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+            child: Text('Food', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: size.width * 0.1)),
           ),
           FadeInRight(
-            child: Text('Mart', style: TextStyle(color: Colors.yellow, fontSize: 40)),
+            child: Text('Mart', style: TextStyle(color: Colors.yellow, fontSize: size.width * 0.1)),
           ),
         ],
       ),

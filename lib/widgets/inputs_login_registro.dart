@@ -26,7 +26,7 @@ class InputContainer extends StatelessWidget {
               obscureText: obscureText,
               decoration: InputDecoration(
                 labelText: lblText,
-                labelStyle: TextStyle(color: Colors.grey, fontSize: 18),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: size.width * 0.04),
                 contentPadding: EdgeInsets.zero,
                 border: InputBorder.none,
               ),
@@ -34,8 +34,8 @@ class InputContainer extends StatelessWidget {
           ),
           (forgot)
               ? Positioned(
-                  top: 15,
-                  right: 2,
+                  top: size.width * 0.01,
+                  right: size.width * 0.01,
                   child: Container(
                     width: size.width * 0.2,
                     height: size.height * 0.04,
@@ -46,7 +46,7 @@ class InputContainer extends StatelessWidget {
                       },
                       child: Text(
                         'Forgot?',
-                        style: TextStyle(color: Color(0xff40206D), fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Color(0xff40206D), fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

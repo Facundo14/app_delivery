@@ -19,7 +19,7 @@ class RestoInfoPage extends StatelessWidget {
           children: [
             Positioned(top: 0, child: _FondoImagen()),
             Positioned(
-              top: 40,
+              top: size.height * 0.05,
               child: GestureDetector(
                 onTap: () {
                   TopSheetView.show(
@@ -33,10 +33,10 @@ class RestoInfoPage extends StatelessWidget {
                 child: CustomNavBar(),
               ),
             ),
-            Positioned(top: 250, child: Restaurante()),
-            Positioned(top: 220, left: 68, child: _ImagenResto()),
-            Positioned(top: 410, child: _DescripcionResto()),
-            Positioned(top: 570, child: ComentariosPersonas()),
+            Positioned(top: size.height * 0.3, child: Restaurante()),
+            Positioned(top: size.height * 0.26, left: size.width * 0.14, child: _ImagenResto()),
+            Positioned(top: size.height * 0.5, child: _DescripcionResto()),
+            Positioned(top: size.height * 0.72, child: ComentariosPersonas()),
             Positioned(bottom: 0, child: _Boton())
           ],
         ),
@@ -67,7 +67,7 @@ class _Boton extends StatelessWidget {
               child: Center(
                 child: Text(
                   'ORDER FOOD NOW',
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
                 ),
               ),
             ),
@@ -85,6 +85,7 @@ class ComentariosPersonas extends StatelessWidget {
     return Container(
       width: size.width * 0.9,
       height: size.width * 0.55,
+      margin: EdgeInsets.only(top:25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -94,8 +95,10 @@ class ComentariosPersonas extends StatelessWidget {
           ),
           Container(
             width: size.width * 0.9,
-            height: size.width * 0.49,
+            height: size.height * 0.4,
             child: ListView.builder(
+              padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
+              physics: BouncingScrollPhysics(),
               itemCount: 6,
               itemBuilder: (BuildContext context, int index) {
                 return _BoxOpnion();
@@ -113,9 +116,9 @@ class _BoxOpnion extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(5),
       width: size.width * 0.8,
       height: size.width * 0.3,
+      margin: EdgeInsets.symmetric(vertical: size.width * 0.01),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -176,10 +179,10 @@ class _DatosUsuario extends StatelessWidget {
               children: [
                 Text(
                   'Pepito Juanito',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
                 ),
                 SizedBox(height: size.width * 0.01),
-                Text('24 de Junio, 2020'),
+                Text('24 de Junio, 2020', style: TextStyle(fontSize: size.width * 0.04),),
               ],
             ),
           ),
@@ -189,11 +192,11 @@ class _DatosUsuario extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.star, size: 16, color: Colors.green),
-                Icon(Icons.star, size: 16, color: Colors.green),
-                Icon(Icons.star, size: 16, color: Colors.green),
-                Icon(Icons.star, size: 16, color: Colors.green),
-                Icon(Icons.star_border, size: 16, color: Colors.grey),
+                Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
+                Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
+                Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
+                Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
+                Icon(Icons.star_border, size: size.width * 0.04, color: Colors.grey),
               ],
             ),
           )
@@ -208,7 +211,7 @@ class _DescripcionResto extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(size.width* 0.01),
       width: size.width * 0.9,
       height: size.width * 0.4,
       child: SingleChildScrollView(
@@ -224,7 +227,7 @@ class _DescripcionResto extends StatelessWidget {
             SizedBox(height: size.width * 0.03),
             Text(
               'Consequat est aliqua non irure cillum pariatur amet duis elit non cillum adipisicing elit ullamco. Proident velit enim Lorem Lorem aute consectetur labore dolor. Adipisicing mollit culpa quis nulla culpa ex excepteur excepteur incididunt anim Lorem eiusmod dolore. Occaecat consectetur ullamco sit voluptate deserunt ullamco nulla laborum qui laboris sunt est reprehenderit. Incididunt amet laborum eiusmod ipsum ex consequat pariatur elit aute cupidatat officia minim officia et.',
-              maxLines: 7,
+              maxLines: 12,
               textAlign: TextAlign.justify,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(color: Colors.white),
@@ -264,7 +267,6 @@ class Restaurante extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.all(10),
             width: size.width,
             height: size.height * 0.8,
             decoration: BoxDecoration(
@@ -273,33 +275,32 @@ class Restaurante extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(10),
             width: size.width,
-            height: size.height * 0.14,
+            height: size.height * 0.15,
             decoration: BoxDecoration(
               color: Color(0xff381764),
               borderRadius: BorderRadius.circular(15),
             ),
           ),
           Positioned(
-            top: 21,
-            left: 150,
+            top: size.width * 0.05,
+            left: size.width * 0.35,
             child: Container(
               width: size.width * 0.30,
               height: size.height * 0.06,
               child: Text(
                 'Marine Rise Restaurant',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ),
           ),
           Positioned(
-            top: 78,
-            left: 70,
+            top: size.width * 0.19,
+            left: size.width * 0.13,
             child: Container(
-              height: size.height * 0.03,
-              width: size.width * 0.15,
+              height: size.height * 0.035,
+              width: size.width * 0.17,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
@@ -316,12 +317,12 @@ class Restaurante extends StatelessWidget {
                   children: [
                     Text(
                       '4.3',
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: size.width * 0.04),
                     ),
-                    SizedBox(width: size.width * 0.005),
+                    SizedBox(width: size.width * 0.007),
                     Icon(
                       Icons.star,
-                      size: 17,
+                      size: size.width * 0.04,
                     ),
                   ],
                 ),
@@ -329,24 +330,24 @@ class Restaurante extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 80,
-            left: 155,
+            top: size.width * 0.19,
+            left: size.width * 0.33,
             child: Text(
               '198 Poeple rated',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey, fontSize: size.width * 0.034),
             ),
           ),
           Positioned(
-            left: 28,
-            bottom: 18,
+            left: size.width * 0.04,
+            bottom: size.width * 0.04,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.location_on, color: Colors.yellow, size: 15),
+                Icon(Icons.location_on, color: Colors.yellow, size: size.width * 0.04),
                 SizedBox(width: size.width * 0.05),
-                Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white)),
+                Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.035)),
                 SizedBox(width: size.width * 0.05),
-                Icon(Icons.navigation, color: Colors.yellow, size: 15)
+                Icon(Icons.navigation, color: Colors.yellow, size:  size.width * 0.04)
               ],
             ),
           ),

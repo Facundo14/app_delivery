@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    print(size.width);
 
     return Scaffold(
       appBar: AppBar(
@@ -87,7 +88,7 @@ class FondoDifuminado extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.51,
+      height: size.height * 0.5,
       decoration: BoxDecoration(color: Colors.white.withOpacity(0.05)),
     );
   }
@@ -122,12 +123,12 @@ class Restaurantes extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      width: size.width,
+      width: double.infinity,
       height: size.height * 0.17,
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(5),
             width: size.width,
             height: size.height * 0.15,
             decoration: BoxDecoration(
@@ -136,7 +137,7 @@ class Restaurantes extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(5),
             width: size.width,
             height: size.height * 0.1,
             decoration: BoxDecoration(
@@ -145,8 +146,8 @@ class Restaurantes extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 21,
-            left: 30,
+            top: size.width * 0.04,
+            left: size.width * 0.06,
             child: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, 'restoInfo');
@@ -162,16 +163,16 @@ class Restaurantes extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 21,
-            left: 100,
+            top: size.width * 0.05,
+            left: size.width * 0.3,
             child: Text(
               'Marine Rise Restaurant',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
             ),
           ),
           Positioned(
-            top: 53,
-            left: 110,
+            top: size.width * 0.12,
+            left: size.width * 0.3,
             child: Container(
               height: size.height * 0.03,
               width: size.width * 0.15,
@@ -191,12 +192,12 @@ class Restaurantes extends StatelessWidget {
                   children: [
                     Text(
                       '4.3',
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: size.width * 0.032),
                     ),
                     SizedBox(width: size.width * 0.005),
                     Icon(
                       Icons.star,
-                      size: 17,
+                      size: size.width * 0.035,
                     ),
                   ],
                 ),
@@ -204,25 +205,28 @@ class Restaurantes extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 55,
-            left: 180,
+            top: size.width * 0.12,
+            left: size.width * 0.46,
             child: Text(
               '198 Poeple rated',
               style: TextStyle(color: Colors.grey),
             ),
           ),
           Positioned(
-            left: 40,
-            bottom: 18,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.location_on, color: Colors.yellow, size: 15),
-                SizedBox(width: size.width * 0.05),
-                Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white)),
-                SizedBox(width: size.width * 0.05),
-                Icon(Icons.navigation, color: Colors.yellow, size: 15)
-              ],
+            left: size.width * 0.06,
+            bottom: size.height * 0.025,
+            child: Container(
+              width: size.width * 0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.location_on, color: Colors.yellow, size: size.width * 0.05),
+                  SizedBox(width: size.width * 0.05),
+                  Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.032)),
+                  SizedBox(width: size.width * 0.05),
+                  Icon(Icons.navigation, color: Colors.yellow, size: size.width * 0.05)
+                ],
+              ),
             ),
           ),
         ],
@@ -244,7 +248,7 @@ class TextoYBoton extends StatelessWidget {
           SizedBox(width: size.width * 0.04),
           Text(
             'Restaruants Near you',
-            style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: 16),
+            style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: size.width * 0.04),
           ),
           Spacer(),
           ElevatedButton(
@@ -253,7 +257,7 @@ class TextoYBoton extends StatelessWidget {
             },
             child: Text(
               'View in map',
-              style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 17),
+              style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: size.width * 0.045),
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.yellow),
@@ -332,14 +336,14 @@ class CardSlide extends StatelessWidget {
                     padding: EdgeInsets.only(right: 20, top: 20),
                     child: Text(
                       'NEW FLAVORS ADDED',
-                      style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: size.width * 0.05, color: Colors.white, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.right,
                     ),
                   ),
                   SizedBox(height: 20),
                   Text(
                     'GET THE DEAL >>',
-                    style: TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: size.width * 0.035, color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -364,11 +368,11 @@ class InputSearch extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(width: 15),
+          SizedBox(width: size.width * 0.04),
           Icon(
             Icons.search,
             color: Color(0xff381764),
-            size: 35,
+            size: size.width * 0.08,
           ),
           Expanded(
             child: TextField(
@@ -378,17 +382,17 @@ class InputSearch extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'What\'d you like to eat today?',
                 hintStyle: TextStyle(color: Colors.grey),
-                contentPadding: EdgeInsets.zero,
+                contentPadding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 border: InputBorder.none,
               ),
             ),
           ),
           Icon(
             Icons.tune,
-            size: 30,
+            size: size.width * 0.08,
             color: Colors.grey,
           ),
-          SizedBox(width: 20)
+          SizedBox(width: size.width * 0.05)
         ],
       ),
     );

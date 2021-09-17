@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class BotonProceddFinal extends StatelessWidget {
+  final String titulo;
+  final VoidCallback onPress;
+
+  const BotonProceddFinal({required this.titulo, required this.onPress});
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, 'orderInfo');
-      },
+      onTap: onPress,
       child: Container(
         width: size.width,
         height: size.height * 0.1,
@@ -16,7 +18,7 @@ class BotonProceddFinal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'PROCEDD TO CHECKOUT',
+              titulo,
               style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
             ),
             Icon(

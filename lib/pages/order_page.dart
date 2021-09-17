@@ -6,8 +6,8 @@ class OrderPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.menu, size: 35),
-        title: Text('MY ORDERS'),
+        leading: Icon(Icons.menu, size: size.width * 0.08),
+        title: Text('MY ORDERS', style: TextStyle(fontSize: size.width * 0.05)),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -57,7 +57,8 @@ class _BotonesState extends State<Botones> {
               },
               child: Text(
                 'New (4)',
-                style: TextStyle(color: (seleccion == 0) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: (seleccion == 0) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold, fontSize: size.width * 0.037),
               ),
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
@@ -87,7 +88,8 @@ class _BotonesState extends State<Botones> {
               },
               child: Text(
                 'In Process (5)',
-                style: TextStyle(color: (seleccion == 1) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: (seleccion == 1) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold, fontSize: size.width * 0.037),
               ),
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
@@ -117,7 +119,8 @@ class _BotonesState extends State<Botones> {
               },
               child: Text(
                 'Delivered',
-                style: TextStyle(color: (seleccion == 2) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: (seleccion == 2) ? Colors.deepPurple : Colors.white, fontWeight: FontWeight.bold, fontSize: size.width * 0.037),
               ),
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
@@ -187,8 +190,8 @@ class Cards extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 21,
-              left: 30,
+              top: size.height * 0.025,
+              left: size.width * 0.05,
               child: Container(
                 width: size.width * 0.15,
                 height: size.height * 0.075,

@@ -23,10 +23,10 @@ class MetodosPagosPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('SELECT PAYMENT METHODS', style: TextStyle(fontSize: 18)),
+        title: Text('SELECT PAYMENT METHODS', style: TextStyle(fontSize: size.width * 0.05)),
         backgroundColor: Color(0xff381764),
         elevation: 0,
-        leading: Icon(Icons.chevron_left, color: Colors.white, size: 35),
+        leading: Icon(Icons.chevron_left, color: Colors.white, size: size.width * 0.07),
       ),
       backgroundColor: Color(0xff381764),
       body: Stack(
@@ -44,7 +44,12 @@ class MetodosPagosPage extends StatelessWidget {
               child: Column(
                 children: [
                   _Ticket(),
-                  BotonProceddFinal(),
+                  BotonProceddFinal(
+                    onPress: () {
+                      Navigator.pushNamed(context, 'orderInfo');
+                    },
+                    titulo: 'PROCEED TO CHECK OUT',
+                  ),
                 ],
               )),
         ],
@@ -97,7 +102,7 @@ class __ListadoState extends State<_Listado> {
                   child: Center(
                     child: Text(
                       listado[index].descripcion,
-                      style: TextStyle(fontSize: 21),
+                      style: TextStyle(fontSize: size.width * 0.052),
                     ),
                   ),
                 ),
@@ -128,11 +133,11 @@ class _Ticket extends StatelessWidget {
         children: [
           Text(
             'Amount Payable',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
           ),
           Text(
             '\$25.50',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
           ),
         ],
       ),

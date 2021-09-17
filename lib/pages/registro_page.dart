@@ -14,7 +14,7 @@ class RegistroPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           'SIGN UP',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: size.width * 0.06),
         ),
         centerTitle: true,
         leading: GestureDetector(
@@ -23,7 +23,7 @@ class RegistroPage extends StatelessWidget {
           },
           child: Icon(
             Icons.keyboard_arrow_left,
-            size: 30,
+            size: size.width * 0.08,
           ),
         ),
       ),
@@ -32,56 +32,92 @@ class RegistroPage extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         child: Container(
           width: size.width,
-          height: size.height * 0.9,
+          height: size.height,
           child: Column(
-            children: [
-              _PicImage(),
-              FadeInLeft(
-                duration: Duration(milliseconds: 500),
-                child: InputContainer(
-                  lblText: 'Full Name',
-                  tipo: TextInputType.name,
-                ),
-              ),
-              FadeInLeft(
-                duration: Duration(milliseconds: 600),
-                child: InputContainer(
-                  lblText: 'Email Address',
-                  tipo: TextInputType.emailAddress,
-                ),
-              ),
-              FadeInLeft(
-                duration: Duration(milliseconds: 700),
-                child: InputContainer(
-                  lblText: 'Phone Number',
-                  tipo: TextInputType.phone,
-                ),
-              ),
-              FadeInLeft(
-                duration: Duration(milliseconds: 800),
-                child: InputContainer(
-                  lblText: 'Create Password',
-                  tipo: TextInputType.visiblePassword,
-                  obscureText: true,
-                ),
-              ),
-              FadeInLeft(
-                duration: Duration(milliseconds: 900),
-                child: InputContainer(
-                  lblText: 'Confirm Password',
-                  tipo: TextInputType.visiblePassword,
-                  obscureText: true,
-                ),
-              ),
-              FadeIn(
-                duration: Duration(milliseconds: 500),
-                child: BotonSesion(
-                  titulo: 'SIGN UP',
-                ),
-              )
-            ],
+            children: [_PicImage(), _Form()],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Form extends StatefulWidget {
+  @override
+  State<_Form> createState() => _FormState();
+}
+
+final TextEditingController txtNombre = new TextEditingController();
+final TextEditingController txtEmail = new TextEditingController();
+final TextEditingController txtTelefono = new TextEditingController();
+final TextEditingController txtPass = new TextEditingController();
+
+class _FormState extends State<_Form> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+          FadeInLeft(
+            duration: Duration(milliseconds: 500),
+            child: InputContainer(
+              lblText: 'Full Name',
+              tipo: TextInputType.name,
+              controller: txtNombre,
+            ),
+          ),
+          FadeInLeft(
+            duration: Duration(milliseconds: 600),
+            child: InputContainer(
+              lblText: 'Email Address',
+              tipo: TextInputType.emailAddress,
+              controller: txtEmail,
+            ),
+          ),
+          FadeInLeft(
+            duration: Duration(milliseconds: 700),
+            child: InputContainer(
+              lblText: 'Phone Number',
+              tipo: TextInputType.phone,
+              controller: txtTelefono,
+            ),
+          ),
+          FadeInLeft(
+            duration: Duration(milliseconds: 800),
+            child: InputContainer(
+              lblText: 'Create Password',
+              tipo: TextInputType.visiblePassword,
+              obscureText: true,
+              controller: txtPass,
+            ),
+          ),
+          FadeInLeft(
+            duration: Duration(milliseconds: 900),
+            child: InputContainer(
+              lblText: 'Confirm Password',
+              tipo: TextInputType.visiblePassword,
+              obscureText: true,
+              controller: txtPass,
+            ),
+          ),
+          FadeIn(
+            duration: Duration(milliseconds: 500),
+            child: BotonSesion(
+              titulo: 'SIGN UP',
+            ),
+          )
+        ],
       ),
     );
   }
@@ -122,13 +158,15 @@ class _PicImage extends StatelessWidget {
                 child: FaIcon(
               FontAwesomeIcons.camera,
               color: Color(0xff40206D),
+              size: size.width * 0.045,
             )),
           ),
           Container(
             width: size.width * 0.4,
             height: size.height * 0.05,
             child: Center(
-              child: Text('Add profile picture', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 17)),
+              child: Text('Add profile picture',
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: size.width * 0.045)),
             ),
           ),
         ],

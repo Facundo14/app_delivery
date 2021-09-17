@@ -6,8 +6,9 @@ class InputContainer extends StatelessWidget {
   final TextInputType? tipo;
   final bool forgot;
   final String pagForgot;
+  final TextEditingController? controller;
 
-  const InputContainer({this.lblText, this.obscureText = false, this.tipo, this.forgot = false, this.pagForgot = 'login'});
+  const InputContainer({this.lblText, this.obscureText = false, this.tipo, this.forgot = false, this.pagForgot = 'login', this.controller});
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -22,6 +23,7 @@ class InputContainer extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
+              controller: controller,
               keyboardType: tipo,
               obscureText: obscureText,
               decoration: InputDecoration(

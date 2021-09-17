@@ -26,7 +26,15 @@ class AddressPage extends StatelessWidget {
             _Direcciones(),
             Positioned(top: size.height * 0.55, child: _AgregarNuevaDire()),
             Positioned(top: size.height * 0.72, child: _Ticket()),
-            Positioned(top: size.height * 0.8, child: BotonProceddFinal())
+            Positioned(
+              top: size.height * 0.8,
+              child: BotonProceddFinal(
+                onPress: () {
+                  Navigator.pushNamed(context, 'metodos');
+                },
+                titulo: 'PROCEDD TO CHECK OUT',
+              ),
+            )
           ],
         ),
       ),

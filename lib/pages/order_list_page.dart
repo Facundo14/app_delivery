@@ -4,30 +4,35 @@ import 'package:flutter/material.dart';
 class OrderListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('MY ORDERS', style: TextStyle(fontSize: 18)),
+        title: Text('MY ORDERS', style: TextStyle(fontSize: size.width * 0.05)),
         backgroundColor: Color(0xff381764),
         elevation: 0,
-        leading: Icon(Icons.chevron_left, color: Colors.white, size: 35),
+        leading: Icon(Icons.chevron_left, color: Colors.white, size: size.width * 0.08),
       ),
       backgroundColor: Color(0xff381764),
-      body: Column(
-        children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.all(20),
-            child: Text(
-              'Upcoming Orders',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
+      body: Container(
+        width: size.width,
+        height: size.height,
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                'Upcoming Orders',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: size.width * 0.05,
+                ),
               ),
             ),
-          ),
-          _ListaOrdenes(),
-        ],
+            _ListaOrdenes(),
+          ],
+        ),
       ),
     );
   }
@@ -79,59 +84,63 @@ class _Pedido extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Stack(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
       children: [
-        Container(
-          margin: EdgeInsets.all(10),
-          width: size.width * 0.15,
-          height: size.width * 0.15,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: NetworkImage('https://graffica.info/wp-content/uploads/2017/01/Kentucky-Fried-Chicken.jpg'),
-              fit: BoxFit.cover,
+        Positioned(
+          top: size.height * 0.03,
+          right: size.height * 0.34,
+          child: Container(
+            margin: EdgeInsets.all(10),
+            width: size.width * 0.15,
+            height: size.width * 0.15,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage('https://graffica.info/wp-content/uploads/2017/01/Kentucky-Fried-Chicken.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
         Positioned(
-          top: 15,
-          right: 90,
+          top: size.height * 0.015,
+          right: size.height * 0.1,
           child: Text(
             'Marine Restaurant',
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
           ),
         ),
         Positioned(
-          bottom: 40,
-          right: 140,
+          top: size.height * 0.065,
+          right: size.height * 0.16,
           child: Text(
             'Order: CCCWS200 (2 items)',
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: size.width * 0.03),
           ),
         ),
         Positioned(
-          bottom: 40,
-          right: 10,
+          top: size.height * 0.065,
+          right: size.height * 0.02,
           child: Text(
             '\$ 25.5',
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: size.width * 0.03),
           ),
         ),
         Positioned(
-          bottom: 20,
-          right: 146,
+          top: size.height * 0.1,
+          right: size.height * 0.17,
           child: Text(
             'Ordered 14 Jun | 11:50 pm',
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: size.width * 0.03),
           ),
         ),
         Positioned(
-          bottom: 20,
-          right: 10,
+          top: size.height * 0.1,
+          right: size.height * 0.02,
           child: Text(
             'Paid via Credit Card',
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: size.width * 0.03),
           ),
         ),
       ],

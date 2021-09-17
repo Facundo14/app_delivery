@@ -33,11 +33,25 @@ class RestoInfoPage extends StatelessWidget {
                 child: CustomNavBar(),
               ),
             ),
-            Positioned(top: size.height * 0.3, child: Restaurante()),
-            Positioned(top: size.height * 0.26, left: size.width * 0.14, child: _ImagenResto()),
-            Positioned(top: size.height * 0.5, child: _DescripcionResto()),
-            Positioned(top: size.height * 0.72, child: ComentariosPersonas()),
-            Positioned(bottom: 0, child: _Boton())
+            Positioned(top: size.height * 0.2, child: Restaurante()),
+            Positioned(top: size.height * 0.15, left: size.width * 0.14, child: _ImagenResto()),
+            Positioned(
+              top: size.height * 0.4,
+              child: Column(
+                children: [
+                  _DescripcionResto(),
+                  ComentariosPersonas(),
+                ],
+              ),
+            ),
+            Positioned(
+              top: size.height * 0.93,
+              child: _Boton(),
+            ),
+
+            // Positioned(top: size.height * 0.4, child: _DescripcionResto()),
+            // Positioned(top: size.height * 0.67, child: ComentariosPersonas()),
+            // _Boton()
           ],
         ),
       ),
@@ -84,28 +98,30 @@ class ComentariosPersonas extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * 0.9,
-      height: size.width * 0.55,
-      margin: EdgeInsets.only(top:25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'What People Says',
-            style: TextStyle(color: Colors.grey),
-          ),
-          Container(
-            width: size.width * 0.9,
-            height: size.height * 0.4,
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
-              physics: BouncingScrollPhysics(),
-              itemCount: 6,
-              itemBuilder: (BuildContext context, int index) {
-                return _BoxOpnion();
-              },
+      height: size.width,
+      margin: EdgeInsets.only(top: size.width * 0.015),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'What People Says',
+              style: TextStyle(color: Colors.grey),
             ),
-          )
-        ],
+            Container(
+              width: size.width * 0.9,
+              height: size.height * 0.30,
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
+                physics: BouncingScrollPhysics(),
+                itemCount: 6,
+                itemBuilder: (BuildContext context, int index) {
+                  return _BoxOpnion();
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -138,10 +154,10 @@ class _Comentario extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.75,
-      height: size.height * 0.05,
+      width: size.width * 0.78,
       child: Text(
         'Qui est exercitation velit labore labore cupidatat.Qui est exercitation velit labore labore cupidatat.Qui est exercitation velit labore labore cupidatat.Qui est exercitation velit labore labore cupidatat.',
+        style: TextStyle(fontSize: size.width * 0.03),
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.justify,
@@ -182,7 +198,10 @@ class _DatosUsuario extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
                 ),
                 SizedBox(height: size.width * 0.01),
-                Text('24 de Junio, 2020', style: TextStyle(fontSize: size.width * 0.04),),
+                Text(
+                  '24 de Junio, 2020',
+                  style: TextStyle(fontSize: size.width * 0.04),
+                ),
               ],
             ),
           ),
@@ -211,7 +230,7 @@ class _DescripcionResto extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(size.width* 0.01),
+      margin: EdgeInsets.all(size.width * 0.01),
       width: size.width * 0.9,
       height: size.width * 0.4,
       child: SingleChildScrollView(
@@ -226,7 +245,7 @@ class _DescripcionResto extends StatelessWidget {
             ),
             SizedBox(height: size.width * 0.03),
             Text(
-              'Consequat est aliqua non irure cillum pariatur amet duis elit non cillum adipisicing elit ullamco. Proident velit enim Lorem Lorem aute consectetur labore dolor. Adipisicing mollit culpa quis nulla culpa ex excepteur excepteur incididunt anim Lorem eiusmod dolore. Occaecat consectetur ullamco sit voluptate deserunt ullamco nulla laborum qui laboris sunt est reprehenderit. Incididunt amet laborum eiusmod ipsum ex consequat pariatur elit aute cupidatat officia minim officia et.',
+              'Consequat est aliqua non m adipisicing elit ullamco. Proident velit enim Lorem Lorem aute consectetur labore dolor. Adipisicing mollit culpa quis nulla culpa ex excepteur excepteur incididunt anim Lorem eiusmod dolore. Occaecat consectetur ullamco sit voluptate deserunt ullamco nulla laborum qui laboris sunt est reprehenderit. Incididunt amet laborum eiusmod ipsum ex consequat pariatur elit aute cupidatat officia minim officia et.',
               maxLines: 12,
               textAlign: TextAlign.justify,
               overflow: TextOverflow.ellipsis,
@@ -283,15 +302,16 @@ class Restaurante extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: size.width * 0.05,
+            top: size.width * 0.035,
             left: size.width * 0.35,
             child: Container(
-              width: size.width * 0.30,
-              height: size.height * 0.06,
+              width: size.width * 0.5,
+              height: size.height * 0.07,
+              alignment: Alignment.topLeft,
               child: Text(
                 'Marine Rise Restaurant',
                 style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.white),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
               ),
             ),
           ),
@@ -339,7 +359,7 @@ class Restaurante extends StatelessWidget {
           ),
           Positioned(
             left: size.width * 0.04,
-            bottom: size.width * 0.04,
+            bottom: size.width * 0.025,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -347,7 +367,7 @@ class Restaurante extends StatelessWidget {
                 SizedBox(width: size.width * 0.05),
                 Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.035)),
                 SizedBox(width: size.width * 0.05),
-                Icon(Icons.navigation, color: Colors.yellow, size:  size.width * 0.04)
+                Icon(Icons.navigation, color: Colors.yellow, size: size.width * 0.04)
               ],
             ),
           ),
@@ -363,13 +383,11 @@ class _FondoImagen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.6,
+      height: size.height * 0.32,
       child: Stack(
+        alignment: Alignment.center,
         children: [
-          Image.network(
-            'https://th.bing.com/th/id/OIP.VusCj0G5GfqNUnh4czA9mAAAAA?pid=ImgDet&w=450&h=315&rs=1',
-            fit: BoxFit.fill,
-          ),
+          _Imagen(),
           BackdropFilter(
             filter: ImageFilter.blur(
               sigmaX: 1,
@@ -378,6 +396,20 @@ class _FondoImagen extends StatelessWidget {
             child: Container(),
           )
         ],
+      ),
+    );
+  }
+}
+
+class _Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: Image.network(
+        'https://th.bing.com/th/id/R.31c4680445695afc9d8afc3d335ae5e7?rik=sKjIYgczzRhoZQ&pid=ImgRaw&r=0',
+        fit: BoxFit.cover,
       ),
     );
   }

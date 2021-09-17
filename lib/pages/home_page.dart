@@ -300,19 +300,24 @@ class CardSlide extends StatelessWidget {
     return Container(
       width: size.width * 0.9,
       height: size.height * 0.20,
+      margin: EdgeInsets.symmetric(horizontal: size.height * 0.005),
       child: Stack(
         alignment: Alignment.centerRight,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image(
-              image: AssetImage('assets/img1.jpg'),
-              fit: BoxFit.cover,
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: Image(
+                image: AssetImage('assets/img1.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Container(
-            width: size.width * 0.725,
-            height: size.height * 0.3,
+            width: double.infinity,
+            height: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               gradient: LinearGradient(
@@ -333,14 +338,14 @@ class CardSlide extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(right: 20, top: 20),
+                    padding: EdgeInsets.only(right: size.height * 0.013, top: size.height * 0.013),
                     child: Text(
                       'NEW FLAVORS ADDED',
                       style: TextStyle(fontSize: size.width * 0.05, color: Colors.white, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.right,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: size.height * 0.013),
                   Text(
                     'GET THE DEAL >>',
                     style: TextStyle(fontSize: size.width * 0.035, color: Colors.white, fontWeight: FontWeight.bold),
@@ -434,14 +439,14 @@ class CategoryFood extends StatelessWidget {
       alignment: Alignment.topCenter,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 18),
+          margin: EdgeInsets.symmetric(horizontal: size.height * 0.02),
           width: size.width * 0.17,
           height: size.height * 0.10,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
           child: Container(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(size.height * 0.013),
             child: Image(
               image: AssetImage(this.img),
               fit: BoxFit.contain,
@@ -452,7 +457,7 @@ class CategoryFood extends StatelessWidget {
           bottom: 0,
           child: Text(
             this.titulo,
-            style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.white, fontSize: size.height * 0.015, fontWeight: FontWeight.bold),
           ),
         )
       ],

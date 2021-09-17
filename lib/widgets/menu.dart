@@ -16,13 +16,13 @@ class Menu extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.all(10),
-                  child: Icon(Icons.clear, size: 25),
+                  child: Icon(Icons.clear, size: size.height * 0.045),
                 ),
                 Container(
                   margin: EdgeInsets.all(10),
                   child: Text(
                     'Log out',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: size.height * 0.03),
                   ),
                 ),
               ],
@@ -49,17 +49,18 @@ class MenuOpcion extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(size.width * 0.005) ,
       width: size.width * 0.45,
       height: size.height * 0.2,
+      color: Colors.red,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(imagen),
-          SizedBox(height: 10),
+          SizedBox(height: size.height * 0.02),
           Text(
             titulo,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: size.height * 0.03, fontWeight: FontWeight.bold),
           ),
         ],
       ),

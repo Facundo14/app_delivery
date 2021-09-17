@@ -5,18 +5,30 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class AddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('SELECT DELIVERY ADRRESS', style: TextStyle(fontSize: 18)),
+        title: Text(
+          'SELECT DELIVERY ADRRESS',
+          style: TextStyle(fontSize: size.width * 0.05),
+        ),
         backgroundColor: Color(0xff381764),
         elevation: 0,
         leading: Icon(Icons.chevron_left, color: Colors.white, size: 35),
       ),
       backgroundColor: Color(0xff381764),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: _Direcciones(),
+      body: Container(
+        width: size.width,
+        height: size.height,
+        child: Stack(
+          children: [
+            _Direcciones(),
+            Positioned(top: size.height * 0.55, child: _AgregarNuevaDire()),
+            Positioned(top: size.height * 0.72, child: _Ticket()),
+            Positioned(top: size.height * 0.8, child: BotonProceddFinal())
+          ],
+        ),
       ),
     );
   }
@@ -65,97 +77,87 @@ class __DireccionesState extends State<_Direcciones> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     String value = 'Home';
-    return Column(
-      children: [
-        Center(
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Container(
-              width: size.width * 0.95,
-              height: size.height * 0.5,
-              child: ListView.builder(
-                itemCount: lista.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(5),
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Container(
+        width: size.width * 0.95,
+        height: size.height * 0.52,
+        child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          itemCount: lista.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              width: size.width,
+              height: size.height * 0.24,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          lista[index].titulo,
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.06, color: Colors.white),
+                        ),
+                      ),
+                      Spacer(),
+                      Radio(
+                        fillColor: MaterialStateColor.resolveWith((states) => Colors.yellow),
+                        value: lista[index].titulo,
+                        groupValue: value,
+                        onChanged: (value) {
+                          setState(() {
+                            value = value;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Container(
                     width: size.width,
-                    height: size.height * 0.23,
+                    height: size.height * 0.15,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Text(
-                                lista[index].titulo,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
-                              ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: size.width * 0.9,
+                          height: size.height * 0.08,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: Text(
+                              lista[index].direccion,
+                              style: TextStyle(fontSize: size.width * 0.05),
+                              textAlign: TextAlign.left,
                             ),
-                            Spacer(),
-                            Radio(
-                              fillColor: MaterialStateColor.resolveWith((states) => Colors.yellow),
-                              value: lista[index].titulo,
-                              groupValue: value,
-                              onChanged: (value) {
-                                setState(() {
-                                  value = value;
-                                });
-                              },
-                            )
-                          ],
+                          ),
                         ),
                         Container(
-                          width: size.width,
-                          height: size.height * 0.15,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                          width: size.width * 0.9,
+                          height: size.height * 0.05,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: Text(
+                              lista[index].telefono,
+                              style: TextStyle(fontSize: size.width * 0.04),
+                              textAlign: TextAlign.left,
+                            ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(5),
-                                width: size.width * 0.9,
-                                height: size.height * 0.08,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    lista[index].direccion,
-                                    style: TextStyle(fontSize: 20),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: size.width * 0.9,
-                                height: size.height * 0.05,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    lista[index].telefono,
-                                    style: TextStyle(fontSize: 18),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
+                        ),
                       ],
                     ),
-                  );
-                },
+                  )
+                ],
               ),
-            ),
-          ),
+            );
+          },
         ),
-        _AgregarNuevaDire(),
-        SizedBox(height: size.height * 0.14),
-        _Ticket(),
-        BotonProceddFinal()
-      ],
+      ),
     );
   }
 }
@@ -176,11 +178,11 @@ class _Ticket extends StatelessWidget {
         children: [
           Text(
             'Amount Payable',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
           ),
           Text(
             '\$25.50',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
           ),
         ],
       ),
@@ -193,7 +195,7 @@ class _AgregarNuevaDire extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
       width: size.width,
       height: size.height * 0.05,
       child: Row(
@@ -201,7 +203,7 @@ class _AgregarNuevaDire extends StatelessWidget {
         children: [
           Text(
             'Add a new location',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           Spacer(),
           TextButton(
@@ -210,7 +212,7 @@ class _AgregarNuevaDire extends StatelessWidget {
             },
             child: FaIcon(
               FontAwesomeIcons.plus,
-              size: 12,
+              size: size.width * 0.025,
               color: Color(0xff381764),
             ),
             style: TextButton.styleFrom(

@@ -33,6 +33,12 @@ class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProvid
   }
 
   @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // we need x and y translation variables to animate items in different direction using our enum
     var _xTranslation = 0.0, _yTranslation = 0.0;

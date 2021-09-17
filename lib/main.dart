@@ -1,5 +1,5 @@
 import 'package:app_delivery/pages/pages.dart';
-import 'package:app_delivery/pages/resto_list.dart';
+import 'package:app_delivery/pages/resto_list_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

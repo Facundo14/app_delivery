@@ -13,18 +13,15 @@ class BotonProceddFinal extends StatelessWidget {
         height: size.height * 0.1,
         color: Colors.yellow,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Text(
-                'PROCEDD TO CHECKOUT',
-                style: TextStyle(color: Colors.purple.shade900, fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+            Text(
+              'PROCEDD TO CHECKOUT',
+              style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
             ),
             Icon(
               Icons.chevron_right,
-              size: 40,
+              size: size.height * 0.06,
               color: Colors.purple.shade900,
             )
           ],

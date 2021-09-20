@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmOrderPage extends StatelessWidget {
@@ -16,7 +17,11 @@ class ConfirmOrderPage extends StatelessWidget {
                 _Imagen(),
                 _Texto(),
                 _Ticket(),
-                _BotonFinal(),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'orderList');
+                    },
+                    child: _BotonFinal()),
               ],
             ),
           ),
@@ -43,7 +48,7 @@ class _BotonFinal extends StatelessWidget {
           'TRACK ORDER',
           style: TextStyle(
             color: Color(0xff381764),
-            fontSize: 23,
+            fontSize: size.width * 0.06,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -75,12 +80,12 @@ class _Ticket extends StatelessWidget {
                   Text(
                     'Your Order Number',
                     textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: TextStyle(fontSize: size.width * 0.046, color: Colors.grey),
                   ),
                   Text(
                     'CCDF145412',
                     textAlign: TextAlign.end,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.046),
                   ),
                 ]),
                 TableRow(
@@ -94,7 +99,7 @@ class _Ticket extends StatelessWidget {
                     Text(
                       'Delivery address',
                       textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
+                      style: TextStyle(fontSize: size.width * 0.046, color: Colors.grey),
                     ),
                     Container(),
                   ],
@@ -105,39 +110,40 @@ class _Ticket extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: size.width * 0.6,
+                  width: size.width * 0.8,
+                  height: size.height * 0.1,
                   child: Text(
                     'Esse Lorem aliquip non eu sint enim aliqua dolore est laboris eu exercitation velit.',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: size.height * 0.03),
+            SizedBox(height: size.height * 0.001),
             Table(
               defaultVerticalAlignment: TableCellVerticalAlignment.bottom,
               children: [
                 TableRow(children: [
                   Text(
                     'Total Amount',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: size.width * 0.046),
                     textAlign: TextAlign.left,
                   ),
                   Text(
                     '\$ 25.50',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.046),
                     textAlign: TextAlign.end,
                   ),
                 ]),
                 TableRow(children: [
                   Text(
                     'Amount Pay Via',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: size.width * 0.046),
                     textAlign: TextAlign.left,
                   ),
                   Text(
                     'PayU Money',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.046),
                     textAlign: TextAlign.end,
                   ),
                 ]),
@@ -160,13 +166,19 @@ class _Texto extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            'Hey, Samantha',
-            style: TextStyle(color: Colors.white, fontSize: 33, fontWeight: FontWeight.bold),
+          FadeIn(
+            delay: Duration(milliseconds: 400),
+            child: Text(
+              'Hey, Samantha',
+              style: TextStyle(color: Colors.white, fontSize: size.width * 0.08, fontWeight: FontWeight.bold),
+            ),
           ),
-          Text(
-            'Your Order is confirmed!',
-            style: TextStyle(color: Colors.white, fontSize: 23),
+          FadeInDown(
+            delay: Duration(milliseconds: 600),
+            child: Text(
+              'Your Order is confirmed!',
+              style: TextStyle(color: Colors.white, fontSize: size.width * 0.04),
+            ),
           )
         ],
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BotonFinal extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -15,17 +14,17 @@ class BotonFinal extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               '\$11.5 (1 item)',
-              style: TextStyle(color: Colors.purple.shade900, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
             ),
           ),
           Spacer(),
           Text(
             'CONFIRM ORDER',
-            style: TextStyle(color: Colors.purple.shade900, fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
           ),
           Icon(
             Icons.chevron_right,
-            size: 40,
+            size: size.width * 0.1,
             color: Colors.purple.shade900,
           )
         ],

@@ -16,15 +16,17 @@ class CartPage extends StatelessWidget {
       ),
       backgroundColor: Color(0xff381764),
       body: SafeArea(
-        child: Container(
-          width: size.width,
-          height: size.height,
-          child: Stack(
-            children: [
-              ListaMenu(),
-              Positioned(bottom: size.height * 0.1, child: Ticket()),
-              Positioned(bottom: size.height * 0.0001, child: _BotonFinal()),
-            ],
+        child: SingleChildScrollView(
+          child: Container(
+            width: size.width,
+            height: size.height,
+            child: Stack(
+              children: [
+                Positioned(bottom: size.height * 0.48, child: ListaMenu()),
+                Positioned(bottom: size.height * 0.23, child: Ticket()),
+                Positioned(bottom: size.height * 0.13, child: _BotonFinal()),
+              ],
+            ),
           ),
         ),
       ),
@@ -278,7 +280,8 @@ class _ContenedorPedido extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: size.height * 0.155,
+                top: size.height * 0.17,
+                left: size.width * 0.04,
                 child: Container(
                   width: size.width * 0.9,
                   height: size.height * 0.05,

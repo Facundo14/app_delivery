@@ -17,11 +17,7 @@ class CustomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          GestureDetector(
-              onTap: () {
-                Navigator.pushReplacementNamed(context, this.ruta ?? '');
-              },
-              child: Container(padding: EdgeInsets.only(left: 10), child: Icon(Icons.menu, size: 30, color: this.color ?? Colors.white))),
+          Container(padding: EdgeInsets.only(left: 10), child: Icon(Icons.menu, size: 30, color: this.color ?? Colors.white)),
           Spacer(),
           Text(this.titulo ?? '',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: this.color ?? Colors.white), textAlign: TextAlign.center),

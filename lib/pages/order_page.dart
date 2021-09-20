@@ -63,7 +63,7 @@ class _BotonesState extends State<Botones> {
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
                   BorderSide(
-                    width: 2,
+                    width: size.width * 0.005,
                     color: Colors.white,
                   ),
                 ),
@@ -94,7 +94,7 @@ class _BotonesState extends State<Botones> {
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
                   BorderSide(
-                    width: 2,
+                    width: size.width * 0.005,
                     color: Colors.white,
                   ),
                 ),
@@ -125,7 +125,7 @@ class _BotonesState extends State<Botones> {
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
                   BorderSide(
-                    width: 2,
+                    width: size.width * 0.005,
                     color: Colors.white,
                   ),
                 ),
@@ -172,7 +172,7 @@ class Cards extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.symmetric(horizontal: 5),
               width: size.width,
               height: size.height * 0.15,
               decoration: BoxDecoration(
@@ -181,7 +181,7 @@ class Cards extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.symmetric(horizontal: 5),
               width: size.width,
               height: size.height * 0.1,
               decoration: BoxDecoration(
@@ -190,7 +190,7 @@ class Cards extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: size.height * 0.025,
+              top: size.height * 0.015,
               left: size.width * 0.05,
               child: Container(
                 width: size.width * 0.15,
@@ -202,24 +202,21 @@ class Cards extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 21,
-              left: 100,
+              top: size.height * 0.015,
+              left: size.width * 0.22,
               child: Text(
                 'Samantha Smith',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: size.width * 0.046, fontWeight: FontWeight.bold),
               ),
             ),
             Positioned(
-              top: 55,
-              left: 180,
-              child: Text(
-                '198 Poeple rated',
-                style: TextStyle(color: Colors.grey),
-              ),
+              top: size.height * 0.048,
+              left: size.width * 0.22,
+              child: _Orden(),
             ),
             Positioned(
-              left: 28,
-              bottom: 10,
+              top: size.height * 0.105,
+              left: size.width * 0.05,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -227,22 +224,29 @@ class Cards extends StatelessWidget {
                     width: size.width * 0.6,
                     child: Text(
                       'Margherita Pizza (1), Crust Gourmet Pizza',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: size.width * 0.03),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  SizedBox(width: size.width * 0.045),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'View Order',
-                      style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 15),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                  SizedBox(width: size.width * 0.1),
+                  Container(
+                    width: size.width * 0.22,
+                    height: size.width * 0.07,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          'View Order',
+                          style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.yellow),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
                         ),
                       ),
                     ),
@@ -252,5 +256,65 @@ class Cards extends StatelessWidget {
             ),
           ],
         ));
+  }
+}
+
+class _Orden extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Column(
+      children: [
+        Container(
+          width: size.width * 0.75,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: size.width * 0.41,
+                child: Text(
+                  'Order: CCQERSSD',
+                  style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Container(
+                width: size.width * 0.28,
+                child: Text(
+                  '\$ 25.50',
+                  style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: size.width * 0.75,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: size.width * 0.41,
+                child: Text(
+                  'Ordered on 24 Jun | 11.40 am',
+                  style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Container(
+                width: size.width * 0.28,
+                child: Text(
+                  'Paid via Credit Card',
+                  style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

@@ -46,7 +46,7 @@ class MetodosPagosPage extends StatelessWidget {
                   _Ticket(),
                   BotonProceddFinal(
                     onPress: () {
-                      Navigator.pushNamed(context, 'orderInfo');
+                      Navigator.pushNamed(context, 'confirmOrder');
                     },
                     titulo: 'PROCEED TO CHECK OUT',
                   ),

@@ -1,7 +1,7 @@
 export 'package:app_delivery/pages/cart_page.dart';
 export 'package:app_delivery/pages/home_page.dart';
 export 'package:app_delivery/pages/home_page.dart';
-export 'package:app_delivery/pages/item_page.dart';
+export 'package:app_delivery/pages/item_client_page.dart';
 export 'package:app_delivery/pages/login_page.dart';
 export 'package:app_delivery/pages/map_page.dart';
 export 'package:app_delivery/pages/order_page.dart';

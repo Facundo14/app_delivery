@@ -44,7 +44,7 @@ class ListCards extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
-            return ListaRestaurantes();
+            return Restaurantes();
           },
         ),
       ),

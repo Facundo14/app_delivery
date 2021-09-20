@@ -84,13 +84,11 @@ class _Pedido extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Stack(
-      alignment: Alignment.center,
       children: [
         Positioned(
           top: size.height * 0.03,
-          right: size.height * 0.34,
+          left: size.width * 0.03,
           child: Container(
-            margin: EdgeInsets.all(10),
             width: size.width * 0.15,
             height: size.width * 0.15,
             decoration: BoxDecoration(
@@ -105,44 +103,71 @@ class _Pedido extends StatelessWidget {
         ),
         Positioned(
           top: size.height * 0.015,
-          right: size.height * 0.1,
-          child: Text(
-            'Marine Restaurant',
-            style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Positioned(
-          top: size.height * 0.065,
-          right: size.height * 0.16,
-          child: Text(
-            'Order: CCCWS200 (2 items)',
-            style: TextStyle(fontSize: size.width * 0.03),
-          ),
-        ),
-        Positioned(
-          top: size.height * 0.065,
-          right: size.height * 0.02,
-          child: Text(
-            '\$ 25.5',
-            style: TextStyle(fontSize: size.width * 0.03),
+          left: size.width * 0.2,
+          child: Container(
+            width: size.width * 0.65,
+            child: Text(
+              'Marine Restaurant',
+              style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         Positioned(
           top: size.height * 0.1,
-          right: size.height * 0.17,
-          child: Text(
-            'Ordered 14 Jun | 11:50 pm',
-            style: TextStyle(fontSize: size.width * 0.03),
+          left: size.width * 0.2,
+          child: Column(
+            children: [
+              Container(
+                width: size.width * 0.75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: size.width * 0.41,
+                      child: Text(
+                        'Order: CCQERSSD',
+                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Container(
+                      width: size.width * 0.28,
+                      child: Text(
+                        '\$ 25.50',
+                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: size.width * 0.75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: size.width * 0.41,
+                      child: Text(
+                        'Ordered on 24 Jun | 11.40 am',
+                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Container(
+                      width: size.width * 0.28,
+                      child: Text(
+                        'Paid via Credit Card',
+                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-        Positioned(
-          top: size.height * 0.1,
-          right: size.height * 0.02,
-          child: Text(
-            'Paid via Credit Card',
-            style: TextStyle(fontSize: size.width * 0.03),
-          ),
-        ),
+        )
       ],
     );
   }

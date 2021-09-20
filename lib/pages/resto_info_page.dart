@@ -24,9 +24,7 @@ class RestoInfoPage extends StatelessWidget {
                 onTap: () {
                   TopSheetView.show(
                     context: context,
-                    child: SingleChildScrollView(
-                      child: Menu(),
-                    ),
+                    child: Menu(),
                     direction: TopSheetDirection.TOP,
                   );
                 },

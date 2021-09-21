@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:app_delivery/animations/slider-animation.dart';
 import 'package:app_delivery/widgets/menu.dart';
 import 'package:app_delivery/widgets/top_sheet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -85,7 +84,7 @@ class FondoDifuminado extends StatelessWidget {
 class ListaRestaurantes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ///TODO aca podias usar un expanded en vex de un container para que ocupe todo el sobrante la lista
+    ///TODO aca podias usar un expanded en vex de un container para que ocupe todo el sobrante la
     return Expanded(
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
@@ -113,37 +112,13 @@ class Restaurantes extends StatelessWidget {
       height: size.height * 0.17,
       child: Stack(
         children: [
-          ///Otra forma de acomodar los widget sin utilizar muchos positioned
-          ///Utiliza lo que es listile para acomodar los componentes ya que los componentes posee la forma del widget
           Container(
-            alignment: Alignment.bottomCenter,
             margin: EdgeInsets.all(5),
-            padding: EdgeInsets.symmetric(
-                vertical: size.height * 0.01, horizontal: size.width * 0.05),
             width: size.width,
             height: size.height * 0.15,
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.2),
               borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Icon(Icons.location_on,
-                    color: Colors.yellow, size: size.width * 0.05),
-                //El container es para que si el texto es muy largo no sobresalga de la pantalla y genere overflow
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  width: size.width * 0.75,
-                  child: Text(
-                      '1124, Old Church Street, New York, USA wefravdfbvd',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: size.width * 0.032)),
-                ),
-                Icon(Icons.navigation,
-                    color: Colors.yellow, size: size.width * 0.05)
-              ],
             ),
           ),
           Container(
@@ -155,10 +130,10 @@ class Restaurantes extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.only(
-                top: size.height * 0.01, left: size.width * 0.05),
-            leading: GestureDetector(
+          Positioned(
+            top: size.width * 0.04,
+            left: size.width * 0.06,
+            child: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, 'restoInfo');
               },
@@ -171,50 +146,78 @@ class Restaurantes extends StatelessWidget {
                 ),
               ),
             ),
-            title: Text(
+          ),
+          Positioned(
+            top: size.width * 0.05,
+            left: size.width * 0.3,
+            child: Text(
               'Marine Rise Restaurant',
               style: TextStyle(
                   fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
             ),
-            subtitle: Row(
-              children: [
-                Container(
-                  height: size.height * 0.03,
-                  width: size.width * 0.15,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(horizontal: 10)),
-                      elevation: MaterialStateProperty.all(0),
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xff45AE17)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          '4.3',
-                          style: TextStyle(fontSize: size.width * 0.032),
-                        ),
-                        SizedBox(width: size.width * 0.005),
-                        Icon(
-                          Icons.star,
-                          size: size.width * 0.035,
-                        ),
-                      ],
+          ),
+          Positioned(
+            top: size.width * 0.12,
+            left: size.width * 0.3,
+            child: Container(
+              height: size.height * 0.03,
+              width: size.width * 0.15,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(horizontal: 10)),
+                  elevation: MaterialStateProperty.all(0),
+                  backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                   ),
                 ),
-                Text(
-                  '198 Poeple rated',
-                  style: TextStyle(color: Colors.grey),
+                child: Row(
+                  children: [
+                    Text(
+                      '4.3',
+                      style: TextStyle(fontSize: size.width * 0.032),
+                    ),
+                    SizedBox(width: size.width * 0.005),
+                    Icon(
+                      Icons.star,
+                      size: size.width * 0.035,
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.width * 0.12,
+            left: size.width * 0.46,
+            child: Text(
+              '198 Poeple rated',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          Positioned(
+            left: size.width * 0.06,
+            bottom: size.height * 0.025,
+            child: Container(
+              width: size.width * 0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.location_on,
+                      color: Colors.yellow, size: size.width * 0.05),
+                  SizedBox(width: size.width * 0.05),
+                  Text('1124, Old Church Street, New York, USA',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.032)),
+                  SizedBox(width: size.width * 0.05),
+                  Icon(Icons.navigation,
+                      color: Colors.yellow, size: size.width * 0.05)
+                ],
+              ),
             ),
           ),
         ],

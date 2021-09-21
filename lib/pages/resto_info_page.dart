@@ -32,7 +32,10 @@ class RestoInfoPage extends StatelessWidget {
               ),
             ),
             Positioned(top: size.height * 0.2, child: Restaurante()),
-            Positioned(top: size.height * 0.15, left: size.width * 0.14, child: _ImagenResto()),
+            Positioned(
+                top: size.height * 0.15,
+                left: size.width * 0.14,
+                child: _ImagenResto()),
             Positioned(
               top: size.height * 0.4,
               child: Column(
@@ -79,7 +82,10 @@ class _Boton extends StatelessWidget {
               child: Center(
                 child: Text(
                   'ORDER FOOD NOW',
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: size.width * 0.05),
                 ),
               ),
             ),
@@ -193,7 +199,8 @@ class _DatosUsuario extends StatelessWidget {
               children: [
                 Text(
                   'Pepito Juanito',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: size.width * 0.05),
                 ),
                 SizedBox(height: size.width * 0.01),
                 Text(
@@ -213,7 +220,8 @@ class _DatosUsuario extends StatelessWidget {
                 Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
                 Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
                 Icon(Icons.star, size: size.width * 0.04, color: Colors.green),
-                Icon(Icons.star_border, size: size.width * 0.04, color: Colors.grey),
+                Icon(Icons.star_border,
+                    size: size.width * 0.04, color: Colors.grey),
               ],
             ),
           )
@@ -308,7 +316,10 @@ class Restaurante extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 'Marine Rise Restaurant',
-                style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: size.width * 0.05,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
                 textAlign: TextAlign.start,
               ),
             ),
@@ -322,7 +333,8 @@ class Restaurante extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
+                  padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(horizontal: 10)),
                   elevation: MaterialStateProperty.all(0),
                   backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -352,7 +364,8 @@ class Restaurante extends StatelessWidget {
             left: size.width * 0.33,
             child: Text(
               '198 Poeple rated',
-              style: TextStyle(color: Colors.grey, fontSize: size.width * 0.034),
+              style:
+                  TextStyle(color: Colors.grey, fontSize: size.width * 0.034),
             ),
           ),
           Positioned(
@@ -361,11 +374,15 @@ class Restaurante extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.location_on, color: Colors.yellow, size: size.width * 0.04),
+                Icon(Icons.location_on,
+                    color: Colors.yellow, size: size.width * 0.04),
                 SizedBox(width: size.width * 0.05),
-                Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.035)),
+                Text('1124, Old Church Street, New York, USA',
+                    style: TextStyle(
+                        color: Colors.white, fontSize: size.width * 0.035)),
                 SizedBox(width: size.width * 0.05),
-                Icon(Icons.navigation, color: Colors.yellow, size: size.width * 0.04)
+                Icon(Icons.navigation,
+                    color: Colors.yellow, size: size.width * 0.04)
               ],
             ),
           ),

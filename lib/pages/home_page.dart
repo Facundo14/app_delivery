@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:app_delivery/animations/slider-animation.dart';
 import 'package:app_delivery/widgets/menu.dart';
 import 'package:app_delivery/widgets/top_sheet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -44,35 +45,22 @@ class HomePage extends StatelessWidget {
         child: Container(
           width: size.width,
           height: size.height,
-          child: Stack(
-            alignment: Alignment.topCenter,
+
+          ///TODO no era necesario usar un stack y muchos positioned
+          child: Column(
+            // alignment: Alignment.topCenter,
             children: [
               //Background(),
-              FondoDifuminado(),
+              //TODO no le encontre funcionalidad a este widget
+              // FondoDifuminado(),
 
-              Positioned(
-                top: size.height * 0.01,
-                child: Slideshow(),
-              ),
+              Slideshow(),
               //Slideshow(),
-              Positioned(
-                top: size.height * 0.3,
-                right: size.width * 0.05,
-                left: size.width * 0.05,
-                child: InputSearch(),
-              ),
-              Positioned(
-                top: size.height * 0.38,
-                child: CategoryFoodSlide(),
-              ),
-              Positioned(
-                top: size.height * 0.5,
-                child: TextoYBoton(),
-              ),
-              Positioned(
-                top: size.height * 0.58,
-                child: ListaRestaurantes(),
-              ),
+              SizedBox(height: size.height * 0.01),
+              InputSearch(),
+              CategoryFoodSlide(),
+              TextoYBoton(),
+              ListaRestaurantes(),
               // Center(child: Text('Hola Mundo')),
             ],
           ),
@@ -89,7 +77,7 @@ class FondoDifuminado extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height * 0.5,
-      decoration: BoxDecoration(color: Colors.white.withOpacity(0.05)),
+      decoration: BoxDecoration(color: Colors.red.withOpacity(0.05)),
     );
   }
 }
@@ -97,10 +85,8 @@ class FondoDifuminado extends StatelessWidget {
 class ListaRestaurantes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height * 0.3,
+    ///TODO aca podias usar un expanded en vex de un container para que ocupe todo el sobrante la lista
+    return Expanded(
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: 5,
@@ -127,13 +113,37 @@ class Restaurantes extends StatelessWidget {
       height: size.height * 0.17,
       child: Stack(
         children: [
+          ///Otra forma de acomodar los widget sin utilizar muchos positioned
+          ///Utiliza lo que es listile para acomodar los componentes ya que los componentes posee la forma del widget
           Container(
+            alignment: Alignment.bottomCenter,
             margin: EdgeInsets.all(5),
+            padding: EdgeInsets.symmetric(
+                vertical: size.height * 0.01, horizontal: size.width * 0.05),
             width: size.width,
             height: size.height * 0.15,
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.2),
               borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Icon(Icons.location_on,
+                    color: Colors.yellow, size: size.width * 0.05),
+                //El container es para que si el texto es muy largo no sobresalga de la pantalla y genere overflow
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  width: size.width * 0.75,
+                  child: Text(
+                      '1124, Old Church Street, New York, USA wefravdfbvd',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.032)),
+                ),
+                Icon(Icons.navigation,
+                    color: Colors.yellow, size: size.width * 0.05)
+              ],
             ),
           ),
           Container(
@@ -145,10 +155,10 @@ class Restaurantes extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          Positioned(
-            top: size.width * 0.04,
-            left: size.width * 0.06,
-            child: GestureDetector(
+          ListTile(
+            contentPadding: EdgeInsets.only(
+                top: size.height * 0.01, left: size.width * 0.05),
+            leading: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, 'restoInfo');
               },
@@ -161,72 +171,50 @@ class Restaurantes extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Positioned(
-            top: size.width * 0.05,
-            left: size.width * 0.3,
-            child: Text(
+            title: Text(
               'Marine Rise Restaurant',
-              style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
             ),
-          ),
-          Positioned(
-            top: size.width * 0.12,
-            left: size.width * 0.3,
-            child: Container(
-              height: size.height * 0.03,
-              width: size.width * 0.15,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
-                  elevation: MaterialStateProperty.all(0),
-                  backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
+            subtitle: Row(
+              children: [
+                Container(
+                  height: size.height * 0.03,
+                  width: size.width * 0.15,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.symmetric(horizontal: 10)),
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xff45AE17)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          '4.3',
+                          style: TextStyle(fontSize: size.width * 0.032),
+                        ),
+                        SizedBox(width: size.width * 0.005),
+                        Icon(
+                          Icons.star,
+                          size: size.width * 0.035,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      '4.3',
-                      style: TextStyle(fontSize: size.width * 0.032),
-                    ),
-                    SizedBox(width: size.width * 0.005),
-                    Icon(
-                      Icons.star,
-                      size: size.width * 0.035,
-                    ),
-                  ],
+                Text(
+                  '198 Poeple rated',
+                  style: TextStyle(color: Colors.grey),
                 ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: size.width * 0.12,
-            left: size.width * 0.46,
-            child: Text(
-              '198 Poeple rated',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          Positioned(
-            left: size.width * 0.06,
-            bottom: size.height * 0.025,
-            child: Container(
-              width: size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(Icons.location_on, color: Colors.yellow, size: size.width * 0.05),
-                  SizedBox(width: size.width * 0.05),
-                  Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.032)),
-                  SizedBox(width: size.width * 0.05),
-                  Icon(Icons.navigation, color: Colors.yellow, size: size.width * 0.05)
-                ],
-              ),
+              ],
             ),
           ),
         ],
@@ -248,7 +236,9 @@ class TextoYBoton extends StatelessWidget {
           SizedBox(width: size.width * 0.04),
           Text(
             'Restaruants Near you',
-            style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: size.width * 0.04),
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.3),
+                fontSize: size.width * 0.04),
           ),
           Spacer(),
           ElevatedButton(
@@ -257,13 +247,18 @@ class TextoYBoton extends StatelessWidget {
             },
             child: Text(
               'View in map',
-              style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: size.width * 0.045),
+              style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.width * 0.045),
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.yellow),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      bottomLeft: Radius.circular(30)),
                 ),
               ),
             ),
@@ -338,17 +333,24 @@ class CardSlide extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(right: size.height * 0.013, top: size.height * 0.013),
+                    padding: EdgeInsets.only(
+                        right: size.height * 0.013, top: size.height * 0.013),
                     child: Text(
                       'NEW FLAVORS ADDED',
-                      style: TextStyle(fontSize: size.width * 0.05, color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: size.width * 0.05,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.right,
                     ),
                   ),
                   SizedBox(height: size.height * 0.013),
                   Text(
                     'GET THE DEAL >>',
-                    style: TextStyle(fontSize: size.width * 0.035, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: size.width * 0.035,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -387,7 +389,8 @@ class InputSearch extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'What\'d you like to eat today?',
                 hintStyle: TextStyle(color: Colors.grey),
-                contentPadding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 border: InputBorder.none,
               ),
             ),
@@ -416,8 +419,10 @@ class CategoryFoodSlide extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            CategoryFood(img: 'assets/category/pez.png', titulo: 'Chinase Food'),
-            CategoryFood(img: 'assets/category/vegetales.png', titulo: 'Diet Food'),
+            CategoryFood(
+                img: 'assets/category/pez.png', titulo: 'Chinase Food'),
+            CategoryFood(
+                img: 'assets/category/vegetales.png', titulo: 'Diet Food'),
             CategoryFood(img: 'assets/category/pizza.png', titulo: 'Italian'),
             CategoryFood(img: 'assets/category/sushi.png', titulo: 'Sea Food'),
           ],
@@ -457,7 +462,10 @@ class CategoryFood extends StatelessWidget {
           bottom: 0,
           child: Text(
             this.titulo,
-            style: TextStyle(color: Colors.white, fontSize: size.height * 0.015, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: size.height * 0.015,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],

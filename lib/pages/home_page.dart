@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:app_delivery/animations/slider-animation.dart';
+import 'package:app_delivery/data/bloc/platos/platos_bloc.dart';
 import 'package:app_delivery/widgets/menu.dart';
 import 'package:app_delivery/widgets/top_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -407,21 +409,39 @@ class InputSearch extends StatelessWidget {
 class CategoryFoodSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final blocProvider = BlocProvider.of<PlatosBloc>(context);
+    blocProvider.add(OnObtieneCategorias());
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
       height: size.height * 0.1,
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            CategoryFood(img: 'assets/category/pez.png', titulo: 'Chinase Food'),
-            CategoryFood(img: 'assets/category/vegetales.png', titulo: 'Diet Food'),
-            CategoryFood(img: 'assets/category/pizza.png', titulo: 'Italian'),
-            CategoryFood(img: 'assets/category/sushi.png', titulo: 'Sea Food'),
-          ],
-        ),
+      child: BlocBuilder<PlatosBloc, PlatosState>(
+        builder: (_, state) {
+          print(state.lstCategorias);
+          if (state.isWorking) {
+            return CircularProgressIndicator();
+          }
+          return ListView.builder(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: state.lstCategorias.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CategoryFood(
+                  img: '${state.lstCategorias[index].imagenDispositivo}', titulo: '${state.lstCategorias[index].categoria}');
+            },
+            // child: SingleChildScrollView(
+            //   physics: BouncingScrollPhysics(),
+            //   scrollDirection: Axis.horizontal,
+            //   child: Row(
+            //     children: [
+            //       CategoryFood(img: 'assets/category/vegetales.png', titulo: 'Diet Food'),
+            //       CategoryFood(img: 'assets/category/pizza.png', titulo: 'Italian'),
+            //       CategoryFood(img: 'assets/category/sushi.png', titulo: 'Sea Food'),
+            //     ],
+            //   ),
+            // ),
+          );
+        },
       ),
     );
   }

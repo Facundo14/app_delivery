@@ -4,8 +4,11 @@ part of 'platos_bloc.dart';
 abstract class PlatosEvent {}
 
 class OnObtienePlatos extends PlatosEvent {
-
   OnObtienePlatos();
+}
+
+class OnObtieneCategorias extends PlatosEvent {
+  OnObtieneCategorias();
 }
 
 class OnEstablecePlatoSeleccionado extends PlatosEvent {

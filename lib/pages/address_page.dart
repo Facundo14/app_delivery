@@ -25,9 +25,9 @@ class AddressPage extends StatelessWidget {
           children: [
             _Direcciones(),
             Positioned(top: size.height * 0.55, child: _AgregarNuevaDire()),
-            Positioned(top: size.height * 0.72, child: _Ticket()),
+            Positioned(bottom: size.height * 0.1, child: _Ticket()),
             Positioned(
-              top: size.height * 0.8,
+              bottom:0,
               child: BotonProceddFinal(
                 onPress: () {
                   Navigator.pushNamed(context, 'metodos');
@@ -77,7 +77,6 @@ class __DireccionesState extends State<_Direcciones> {
   void initState() {
     lista.add(direccion1);
     lista.add(direccion2);
-    print(lista);
     super.initState();
   }
 

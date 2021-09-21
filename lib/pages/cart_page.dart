@@ -205,32 +205,63 @@ class _ContenedorPedido extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ),
-              Positioned(
-                top: size.width * -0.08,
-                right: size.width * -0.1,
-                child: Container(
-                  width: size.width * 0.31,
-                  height: size.height * 0.15,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage('assets/productos/jamon.png'),
-                      fit: BoxFit.fill,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: size.height * -0.05,
+                          right: size.width * -0.1,
+                          child: Container(
+                            width: size.width * 0.31,
+                            height: size.height * 0.15,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: Offset(8, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: Image(
+                              image: AssetImage('assets/productos/jamon.png'),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 7,
-                        offset: Offset(8, 3), // changes position of shadow
-                      ),
-                    ],
                   ),
                 ),
               ),
+              // Positioned(
+              //   top: size.width * -0.08,
+              //   right: size.width * -0.1,
+              //   child: Container(
+              //     width: size.width * 0.31,
+              //     height: size.height * 0.15,
+              //     decoration: BoxDecoration(
+              //       color: Colors.red,
+              //       shape: BoxShape.circle,
+              //       // image: DecorationImage(
+              //       //   image: AssetImage('assets/productos/jamon.png'),
+              //       //   fit: BoxFit.fill,
+              //       // ),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.black.withOpacity(0.5),
+              //           spreadRadius: 2,
+              //           blurRadius: 7,
+              //           offset: Offset(8, 3), // changes position of shadow
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               Positioned(
                 top: size.width * 0.035,
                 left: size.width * 0.07,

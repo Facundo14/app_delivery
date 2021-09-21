@@ -31,8 +31,8 @@ class RestoInfoPage extends StatelessWidget {
                 child: CustomNavBar(),
               ),
             ),
-            Positioned(top: size.height * 0.2, child: Restaurante()),
-            Positioned(top: size.height * 0.15, left: size.width * 0.14, child: _ImagenResto()),
+            Positioned(top: size.height * 0.2, left: size.width * 0.04, child: Restaurante()),
+            Positioned(top: size.height * 0.15, left: size.width * 0.1, child: _ImagenResto()),
             Positioned(
               top: size.height * 0.4,
               child: Column(
@@ -315,7 +315,7 @@ class Restaurante extends StatelessWidget {
           ),
           Positioned(
             top: size.width * 0.19,
-            left: size.width * 0.13,
+            left: size.width * 0.1,
             child: Container(
               height: size.height * 0.035,
               width: size.width * 0.17,
@@ -349,7 +349,7 @@ class Restaurante extends StatelessWidget {
           ),
           Positioned(
             top: size.width * 0.19,
-            left: size.width * 0.33,
+            left: size.width * 0.36,
             child: Text(
               '198 Poeple rated',
               style: TextStyle(color: Colors.grey, fontSize: size.width * 0.034),

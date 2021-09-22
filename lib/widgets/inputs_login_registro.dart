@@ -15,7 +15,7 @@ class InputContainer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(5),
       width: size.width * 0.85,
-      height: size.height * 0.115,
+      height: size.height * 0.09,
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
       child: Stack(
         alignment: Alignment.center,

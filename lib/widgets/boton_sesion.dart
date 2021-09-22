@@ -11,7 +11,7 @@ class BotonSesion extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(5),
       width: size.width * 0.85,
-      height: size.height * 0.09,
+      height: size.height * 0.07,
       decoration: BoxDecoration(color: Colors.yellow, borderRadius: BorderRadius.circular(10)),
       child: Center(
         child: Text(

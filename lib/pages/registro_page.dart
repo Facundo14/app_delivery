@@ -34,7 +34,10 @@ class RegistroPage extends StatelessWidget {
           width: size.width,
           height: size.height,
           child: Column(
-            children: [_PicImage(), _Form()],
+            children: [
+              _PicImage(),
+              _Form(),
+            ],
           ),
         ),
       ),

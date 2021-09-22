@@ -1,11 +1,9 @@
 import 'dart:ui';
 
 import 'package:app_delivery/animations/slider-animation.dart';
-import 'package:app_delivery/data/bloc/platos/platos_bloc.dart';
 import 'package:app_delivery/widgets/menu.dart';
 import 'package:app_delivery/widgets/top_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,69 +12,94 @@ class HomePage extends StatelessWidget {
     print(size.width);
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Icon(
-            Icons.location_on,
-            color: Colors.yellow,
-          )
-        ],
-        title: Row(
-          children: [
-            Spacer(),
-            Text('New York'),
-          ],
-        ),
-        leading: GestureDetector(
-            onTap: () {
-              TopSheetView.show(
-                context: context,
-                child: SingleChildScrollView(
-                  child: Menu(),
-                ),
-                direction: TopSheetDirection.TOP,
-              );
-            },
-            child: Icon(Icons.menu)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       backgroundColor: Color(0xff381764),
       body: SafeArea(
+<<<<<<< HEAD
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                actions: [
+                  Icon(
+                    Icons.location_on,
+                    color: Colors.yellow,
+                  )
+                ],
+                title: Row(
+                  children: [
+                    Spacer(),
+                    Text('New York'),
+                  ],
+                ),
+                leading: GestureDetector(
+                    onTap: () {
+                      TopSheetView.show(
+                        context: context,
+                        child: SingleChildScrollView(
+                          child: Menu(),
+                        ),
+                        direction: TopSheetDirection.TOP,
+                      );
+                    },
+                    child: Icon(Icons.menu)),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                bottom: PreferredSize(child: Slideshow(), preferredSize: Size(size.width, size.height * 0.265)),
+              ),
+            ];
+          },
+          body: Container(
+            width: size.width,
+            height: size.height,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                //Background(),
+                FondoDifuminado(),
+                Positioned(
+                  top: size.height * 0.02,
+                  right: size.width * 0.05,
+                  left: size.width * 0.05,
+                  child: InputSearch(),
+                ),
+                Positioned(
+                  top: size.height * 0.1,
+                  child: CategoryFoodSlide(),
+                ),
+                Positioned(
+                  top: size.height * 0.22,
+                  child: TextoYBoton(),
+                ),
+                Positioned(
+                  top: size.height * 0.3,
+                  child: ListaRestaurantes(),
+                ),
+                // Center(child: Text('Hola Mundo')),
+              ],
+            ),
+=======
         child: Container(
           width: size.width,
           height: size.height,
-          child: Stack(
-            alignment: Alignment.topCenter,
+
+          ///TODO no era necesario usar un stack y muchos positioned
+          child: Column(
+            // alignment: Alignment.topCenter,
             children: [
               //Background(),
-              FondoDifuminado(),
+              //TODO no le encontre funcionalidad a este widget
+              // FondoDifuminado(),
 
-              Positioned(
-                top: size.height * 0.01,
-                child: Slideshow(),
-              ),
+              Slideshow(),
               //Slideshow(),
-              Positioned(
-                top: size.height * 0.3,
-                right: size.width * 0.05,
-                left: size.width * 0.05,
-                child: InputSearch(),
-              ),
-              Positioned(
-                top: size.height * 0.38,
-                child: CategoryFoodSlide(),
-              ),
-              Positioned(
-                top: size.height * 0.5,
-                child: TextoYBoton(),
-              ),
-              Positioned(
-                top: size.height * 0.58,
-                child: ListaRestaurantes(),
-              ),
+              SizedBox(height: size.height * 0.01),
+              InputSearch(),
+              CategoryFoodSlide(),
+              TextoYBoton(),
+              ListaRestaurantes(),
               // Center(child: Text('Hola Mundo')),
             ],
+>>>>>>> 12896ca15dba8993ec2147a7a8eaf8f408a75527
           ),
         ),
       ),
@@ -90,8 +113,13 @@ class FondoDifuminado extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.5,
+<<<<<<< HEAD
+      height: size.height * 0.22,
       decoration: BoxDecoration(color: Colors.white.withOpacity(0.05)),
+=======
+      height: size.height * 0.5,
+      decoration: BoxDecoration(color: Colors.red.withOpacity(0.05)),
+>>>>>>> 12896ca15dba8993ec2147a7a8eaf8f408a75527
     );
   }
 }
@@ -99,10 +127,15 @@ class FondoDifuminado extends StatelessWidget {
 class ListaRestaurantes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.3,
+      height: size.height * 0.68,
+=======
+    ///TODO aca podias usar un expanded en vex de un container para que ocupe todo el sobrante la
+    return Expanded(
+>>>>>>> 12896ca15dba8993ec2147a7a8eaf8f408a75527
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: 5,
@@ -169,7 +202,8 @@ class Restaurantes extends StatelessWidget {
             left: size.width * 0.3,
             child: Text(
               'Marine Rise Restaurant',
-              style: TextStyle(fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
             ),
           ),
           Positioned(
@@ -181,7 +215,8 @@ class Restaurantes extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10)),
+                  padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(horizontal: 10)),
                   elevation: MaterialStateProperty.all(0),
                   backgroundColor: MaterialStateProperty.all(Color(0xff45AE17)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -222,11 +257,15 @@ class Restaurantes extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(Icons.location_on, color: Colors.yellow, size: size.width * 0.05),
+                  Icon(Icons.location_on,
+                      color: Colors.yellow, size: size.width * 0.05),
                   SizedBox(width: size.width * 0.05),
-                  Text('1124, Old Church Street, New York, USA', style: TextStyle(color: Colors.white, fontSize: size.width * 0.032)),
+                  Text('1124, Old Church Street, New York, USA',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.032)),
                   SizedBox(width: size.width * 0.05),
-                  Icon(Icons.navigation, color: Colors.yellow, size: size.width * 0.05)
+                  Icon(Icons.navigation,
+                      color: Colors.yellow, size: size.width * 0.05)
                 ],
               ),
             ),
@@ -250,7 +289,9 @@ class TextoYBoton extends StatelessWidget {
           SizedBox(width: size.width * 0.04),
           Text(
             'Restaruants Near you',
-            style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: size.width * 0.04),
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.3),
+                fontSize: size.width * 0.04),
           ),
           Spacer(),
           ElevatedButton(
@@ -259,13 +300,18 @@ class TextoYBoton extends StatelessWidget {
             },
             child: Text(
               'View in map',
-              style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: size.width * 0.045),
+              style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.width * 0.045),
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.yellow),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      bottomLeft: Radius.circular(30)),
                 ),
               ),
             ),
@@ -340,17 +386,24 @@ class CardSlide extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(right: size.height * 0.013, top: size.height * 0.013),
+                    padding: EdgeInsets.only(
+                        right: size.height * 0.013, top: size.height * 0.013),
                     child: Text(
                       'NEW FLAVORS ADDED',
-                      style: TextStyle(fontSize: size.width * 0.05, color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: size.width * 0.05,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.right,
                     ),
                   ),
                   SizedBox(height: size.height * 0.013),
                   Text(
                     'GET THE DEAL >>',
-                    style: TextStyle(fontSize: size.width * 0.035, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: size.width * 0.035,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -389,7 +442,8 @@ class InputSearch extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'What\'d you like to eat today?',
                 hintStyle: TextStyle(color: Colors.grey),
-                contentPadding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 border: InputBorder.none,
               ),
             ),
@@ -409,12 +463,11 @@ class InputSearch extends StatelessWidget {
 class CategoryFoodSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final blocProvider = BlocProvider.of<PlatosBloc>(context);
-    blocProvider.add(OnObtieneCategorias());
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.1,
+<<<<<<< HEAD
+      height: size.height * 0.11,
       child: BlocBuilder<PlatosBloc, PlatosState>(
         builder: (_, state) {
           print(state.lstCategorias);
@@ -442,6 +495,22 @@ class CategoryFoodSlide extends StatelessWidget {
             // ),
           );
         },
+=======
+      height: size.height * 0.1,
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            CategoryFood(
+                img: 'assets/category/pez.png', titulo: 'Chinase Food'),
+            CategoryFood(
+                img: 'assets/category/vegetales.png', titulo: 'Diet Food'),
+            CategoryFood(img: 'assets/category/pizza.png', titulo: 'Italian'),
+            CategoryFood(img: 'assets/category/sushi.png', titulo: 'Sea Food'),
+          ],
+        ),
+>>>>>>> 12896ca15dba8993ec2147a7a8eaf8f408a75527
       ),
     );
   }
@@ -477,7 +546,10 @@ class CategoryFood extends StatelessWidget {
           bottom: 0,
           child: Text(
             this.titulo,
-            style: TextStyle(color: Colors.white, fontSize: size.height * 0.015, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: size.height * 0.015,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],

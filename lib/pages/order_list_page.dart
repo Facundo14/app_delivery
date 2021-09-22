@@ -11,7 +11,8 @@ class OrderListPage extends StatelessWidget {
         title: Text('MY ORDERS', style: TextStyle(fontSize: size.width * 0.05)),
         backgroundColor: Color(0xff381764),
         elevation: 0,
-        leading: Icon(Icons.chevron_left, color: Colors.white, size: size.width * 0.08),
+        leading: Icon(Icons.chevron_left,
+            color: Colors.white, size: size.width * 0.08),
       ),
       backgroundColor: Color(0xff381764),
       body: Container(
@@ -95,7 +96,8 @@ class _Pedido extends StatelessWidget {
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: NetworkImage('https://graffica.info/wp-content/uploads/2017/01/Kentucky-Fried-Chicken.jpg'),
+                image: NetworkImage(
+                    'https://graffica.info/wp-content/uploads/2017/01/Kentucky-Fried-Chicken.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -108,7 +110,8 @@ class _Pedido extends StatelessWidget {
             width: size.width * 0.65,
             child: Text(
               'Marine Restaurant',
-              style: TextStyle(fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -126,7 +129,8 @@ class _Pedido extends StatelessWidget {
                       width: size.width * 0.41,
                       child: Text(
                         'Order: CCQERSSD',
-                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: size.width * 0.03),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -134,7 +138,8 @@ class _Pedido extends StatelessWidget {
                       width: size.width * 0.28,
                       child: Text(
                         '\$ 25.50',
-                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: size.width * 0.03),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -150,7 +155,8 @@ class _Pedido extends StatelessWidget {
                       width: size.width * 0.41,
                       child: Text(
                         'Ordered on 24 Jun | 11.40 am',
-                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: size.width * 0.03),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -158,7 +164,8 @@ class _Pedido extends StatelessWidget {
                       width: size.width * 0.28,
                       child: Text(
                         'Paid via Credit Card',
-                        style: TextStyle(color: Colors.grey, fontSize: size.width * 0.03),
+                        style: TextStyle(
+                            color: Colors.grey, fontSize: size.width * 0.03),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),

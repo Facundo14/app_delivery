@@ -19,7 +19,7 @@ class BotonProceddFinal extends StatelessWidget {
           children: [
             Text(
               titulo,
-              style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.06, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.purple.shade900, fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
             ),
             Icon(
               Icons.chevron_right,

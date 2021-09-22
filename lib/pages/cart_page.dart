@@ -16,17 +16,15 @@ class CartPage extends StatelessWidget {
       ),
       backgroundColor: Color(0xff381764),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: size.width,
-            height: size.height,
-            child: Stack(
-              children: [
-                Positioned(bottom: size.height * 0.48, child: ListaMenu()),
-                Positioned(bottom: size.height * 0.23, child: Ticket()),
-                Positioned(bottom: size.height * 0.13, child: _BotonFinal()),
-              ],
-            ),
+        child: Container(
+          width: size.width,
+          height: size.height,
+          child: Stack(
+            children: [
+              Positioned(top: 0, child: ListaMenu()),
+              Positioned(bottom: size.height * 0.1, child: Ticket()),
+              Positioned(bottom: 0, child: _BotonFinal()),
+            ],
           ),
         ),
       ),
